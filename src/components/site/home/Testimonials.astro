@@ -1,8 +1,6 @@
 <section  class="container" >
-    <div class="grid">
         <h2>O que os alunos tem a dizer sobre o curso?</h2>
         <p>Alunos de verdade que encontraram seu potencial criativo</p>
-    </div>
     <div class="grid">
         <article>
             <img src="aluno1.jpg" alt="">
@@ -20,6 +18,17 @@
 </section>
 
 <style>
+    section {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .grid {
+        width: 100%;
+    } 
+
     article {
         margin-top: 5rem;
         display: flex;
@@ -37,7 +46,7 @@
     }
 
     h2 {
-        max-width: 20rem;
+        max-width: 25rem;
     }
 
     p {

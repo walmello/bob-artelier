@@ -1,0 +1,16 @@
+---
+import Layout from "../components/site/Layout.astro"
+import LoginComponent from "../components/site/Login.astro"
+---
+
+<Layout>
+    <div class="grid container">
+        <LoginComponent/>
+        <div></div>
+    </div>
+
+    <script type="module">
+        import { client } from './scripts/Supabase.js'
+        console.log(client.client)
+    </script>
+</Layout>

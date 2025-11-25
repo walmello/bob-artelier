@@ -1,16 +1,26 @@
 ---
-
+import About from "../components/site/home/About.astro"
+import Community from "../components/site/home/Community.astro"
+import Courses from "../components/site/home/Courses.astro"
+import FAQ from "../components/site/home/FAQ.astro"
+import Features from "../components/site/home/Features.astro"
+import Gallery from "../components/site/home/Gallery.astro"
+import Hero from "../components/site/home/Hero.astro"
+import Numbers from "../components/site/home/Numbers.astro"
+import Pricing from "../components/site/home/Pricing.astro"
+import Testimonials from "../components/site/home/Testimonials.astro"
+import Layout from "../components/site/Layout.astro"
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+    <Hero/>
+    <Courses/>
+    <Features/>
+    <Numbers/>
+    <About/>
+    <Testimonials/>
+    <Gallery/>
+    <Pricing/>
+    <Community/>
+    <FAQ/>
+</Layout>

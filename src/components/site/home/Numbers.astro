@@ -1,0 +1,46 @@
+<section class="container" id="numbers">
+    <div>
+        <p>Mais de</p>
+        <p>100</p>
+        <p>alunos ativos</p>
+    </div>
+    <div>
+        <p>Mais de</p>
+        <p>100</p>
+        <p>alunos ativos</p>
+    </div>
+    <div>
+        <p>Mais de</p>
+        <p>100</p>
+        <p>alunos ativos</p>
+    </div>
+</section>
+
+<style>
+    section {
+        min-height: 30rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    section > * {
+        margin: auto;
+        text-align: center;
+    }
+
+    div > * {
+        margin: 0;
+    }
+
+    div *:nth-child(2) {
+        font-size: 3em;
+    }
+
+    @media (max-width: 767px) {
+        section {
+            display: flex;
+            gap: 1rem;
+            min-height: 0;
+        }
+    }
+</style>

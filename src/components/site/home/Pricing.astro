@@ -1,0 +1,41 @@
+<section class="container grid" >
+    <div>
+        <h2>Preço justo e acessível</h2>
+        <p>Nós entendemos a realidade de quem quer viver de arte, por isso a plataforma completa para o seu desenvolvimento artístico com um preço justo</p>
+        <p>O cadastro é grátis e te dá acesso a cursos gratuítos e uma comunidade especial pra trocar idéia com outros alunos</p>
+        <a role="button" href="">Cadastre-se grátis</a>
+    </div>
+    <div>
+        <p>Mensalidade por apenas *</p>
+        <p class="price"><span>R$</span>100<span>,00</span></p>
+        <small>* É isso mesmo, sem surpresa ou letra miúda</small>
+    </div>
+</section>
+
+<style>
+    section {
+        min-height: 80vh;
+        align-items: center;
+    }
+
+    .price {
+        font-size: 5rem;
+        font-weight: bold;
+    }
+    .price span {
+        font-size: 2rem;
+    }
+
+    @media (max-width: 767px) {
+        section {
+            text-align: center;
+            gap: 3rem;
+            min-height: 0;
+            padding: 5rem 0;
+        }
+
+        section > * {
+            padding: 0;
+        }
+    }
+</style>

@@ -1,0 +1,115 @@
+<div style="overflow: hidden;">
+    <section class="container"  id="courses">
+        <div class="title">
+            <h2>Uma escola de verdade, para artistas de verdade</h2>
+            <p>temos cursos sob medida para artistas e designers exigentes que estão sempre procurando evoluir suas habilidades</p>
+        </div>
+        <div class="cards-wrapper">
+            <div class="cards">
+                <div class="card">
+                    <div class="overlay"></div>
+                    <img src="/image.jpg" alt="">
+                    <h3>Nome do curso</h3>
+                    <a role="button" href="#">ver curso </a>
+                </div>
+                <div class="card">
+                    <div class="overlay"></div>
+                    <img src="/image.jpg" alt="">
+                    <h3>Nome do curso</h3>
+                    <a role="button" href="#">ver curso </a>
+                </div>
+                <div class="card">
+                    <div class="overlay"></div>
+                    <img src="/image.jpg" alt="">
+                    <h3>Nome do curso</h3>
+                    <a role="button" href="#">ver curso </a>
+                </div>
+                <div class="card">
+                    <div class="overlay"></div>
+                    <img src="/image.jpg" alt="">
+                    <h3>Nome do curso</h3>
+                    <a role="button" href="#">ver curso </a>
+                </div>
+            </div>        
+        </div>
+    </section>
+</div>
+
+<style>
+    section {
+        min-height: 80vh;
+        gap: 2rem;
+    }
+    
+    .cards-wrapper {
+        overflow-x: visible;
+        height: fit-content;
+    }
+    
+    .title {
+        max-width: 30rem;
+    }
+    
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        justify-content: end;
+        align-items: center;
+        padding-bottom: 1.5rem;
+    }
+    
+    .card h3 {
+        color: white;
+    }
+    
+    .overlay {
+        background: linear-gradient(0deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;        
+        z-index: -1;
+    }
+    
+    a {
+        font-size: 0.8rem;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        width: fit-content;
+        margin: 0 auto;
+        position: absolute;
+        bottom: -1rem;
+    }
+    
+    .card img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -2;
+    }
+    
+    .cards {
+        display: flex;
+        width: fit-content;
+        gap: 1rem;
+    }
+    
+    .cards > * {
+        width: 16rem;
+        height: 20rem;
+        border: 1px solid black;
+    }
+    
+    @media (max-width: 767px) {
+        .cards-wrapper {
+            overflow-x: scroll;
+        }
+        
+        section {
+            padding: 0;
+        }
+    }
+</style>

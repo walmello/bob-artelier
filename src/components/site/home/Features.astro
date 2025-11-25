@@ -1,0 +1,54 @@
+<section class="container" id="features">
+    <div class="title">
+        <h2>O que é o Bob Artelier?</h2>
+        <p>Bob Artelier é uma plataforma criativa, de artista para artista para aprender livremente em diversas áreas do mercado criativo. 3D, Games, Ilustração..</p>
+    </div>
+    <div class="features">
+        <article>feature</article>
+        <article>feature</article>
+        <article>feature</article>
+        <article>feature</article>
+    </div>
+    
+</section>
+
+<style>
+    section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+    }
+
+    .title {
+        position: sticky;
+        top: 15vh;
+        height: fit-content;
+        order: 1;
+    }
+
+    .features * {
+        position: sticky;
+        top: 15vh;
+        min-height: 60vh;
+    }
+
+    @media (max-width: 767px) {
+        .features * {
+            top: 35vh;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title {
+            order: 0;
+        }
+    }
+
+    article {
+        box-shadow: none;
+        border: 1px solid black;
+    }
+</style>

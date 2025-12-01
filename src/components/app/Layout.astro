@@ -1,6 +1,6 @@
 ---
 import Navbar from "./Navbar.astro"
-import Footer from './Footer.astro'
+import Footer from "./Footer.astro"
 ---
 
 <!DOCTYPE html>
@@ -8,18 +8,20 @@ import Footer from './Footer.astro'
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Bob Artelier</title>
+	<title>Bob Artelier - Dashboard</title>
 	<link rel="icon" type="image/png" href="/bob-icon.svg"/>
 	<script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.js" integrity="sha384-ezjq8118wdwdRMj+nX4bevEi+cDLTbhLAeFF688VK8tPDGeLUe0WoY2MZtSla72F" crossorigin="anonymous"></script>
 	<link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.amber.min.css"
 >
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
-	<Navbar/>
+	<Navbar client:load/>
 	<main>
+		<aside>
+			BARRA LATERAL
+		</aside>
 		<slot/>
 	</main>
 	<Footer/>

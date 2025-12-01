@@ -1,153 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teste com Pico.css (Classless)</title>
+---
+import Hello from '../components/testing/Hello.vue';
+import Layout from '../components/site/Layout.astro';
 
-  <!-- Pico.css - Classless -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
-</head>
-<body>
 
-<header>
-  <h1>Pico.css (Classless) - Playground</h1>
-  <p>Testando elementos padrão sem classes.</p>
-</header>
+const button = () => ({
+    act(){
+        alert('pode dar certo!')
+    }
+})
 
-<main class="container">
-  
-  <!-- Typography -->
-  <section>
-    <h2>Tipografia</h2>
-    <p>Este é um parágrafo de teste. <strong>Negrito</strong>, <em>itálico</em>, <a href="#">link</a>.</p>
-    <blockquote>
-      Este é um blockquote com estilo automático.
-    </blockquote>
-    <pre><code>console.log("Código formatado automaticamente");</code></pre>
-  </section>
+console.log(JSON.stringify(button(), 2, 2))
 
-  <hr>
+---
 
-  <!-- Buttons -->
-  <section>
-    <h2>Botões</h2>
-    <p>
-      <button>Padrão</button>
-      <button class="secondary">Secundário</button>
-      <button class="contrast">Contraste</button>
-    </p>
-  </section>
-
-  <hr>
-
-  <!-- Forms -->
-  <section>
-    <h2>Formulários</h2>
-    <form>
-      <label>
-        Nome
-        <input type="text" placeholder="Seu nome">
-      </label>
-
-      <label>
-        Email
-        <input type="email" placeholder="voce@email.com">
-      </label>
-
-      <label>
-        Assunto
-        <select>
-          <option>Suporte</option>
-          <option>Vendas</option>
-          <option>Outro</option>
-        </select>
-      </label>
-
-      <label>
-        Mensagem
-        <textarea placeholder="Digite aqui..."></textarea>
-      </label>
-
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
-
-  <hr>
-
-  <!-- Table -->
-  <section>
-    <h2>Tabelas</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Produto</th>
-          <th>Preço</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Item A</td>
-          <td>R$ 49,90</td>
-          <td>Ativo</td>
-        </tr>
-        <tr>
-          <td>Item B</td>
-          <td>R$ 129,00</td>
-          <td>Inativo</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <hr>
-
-  <!-- Grid -->
-  <section>
-    <h2>Grid Responsivo</h2>
-    <div class="grid">
-      <article>
-        <h3>Card 1</h3>
-        <p>Conteúdo de exemplo em um artigo estilizado.</p>
-        <button class="secondary">Ação</button>
-      </article>
-      <article>
-        <h3>Card 2</h3>
-        <p>Outro card. Testando responsividade.</p>
-        <button class="secondary">Ação</button>
-      </article>
-      <article>
-        <h3>Card 3</h3>
-        <p>Mais um card bonito usando o estilo classless.</p>
-        <button class="secondary">Ação</button>
-      </article>
-    </div>
-  </section>
-
-  <hr>
-
-  <!-- Dialog -->
-  <section>
-    <h2>Dialog (modal)</h2>
-    <dialog id="demoDialog">
-      <article>
-        <h3>Modal Pico.css</h3>
-        <p>Este é um dialog nativo do HTML, estilizado automaticamente.</p>
-        <footer>
-          <button onclick="demoDialog.close()">Fechar</button>
-        </footer>
-      </article>
-    </dialog>
-
-    <button onclick="demoDialog.showModal()">Abrir Modal</button>
-  </section>
-
-</main>
-
-<footer>
-  <p>Feito com Pico.css • <a href="https://picocss.com">Documentação</a></p>
-</footer>
-
-</body>
-</html>
+<Hello/>

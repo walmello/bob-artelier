@@ -1,4 +1,4 @@
----
+<script>
     import supabase from '../../scripts/Supabase';
     let user
 
@@ -12,7 +12,8 @@
         supabase.auth.signOut();
         window.location.href = '/'
     }
----
+</script>
+
 <header>
     <nav class="container-fluid">
         <div class="menu">
@@ -36,17 +37,17 @@
                 <a type="button" class="secondary" href="/registrar">Registrar</a>
             </li>
         </ul>
-        <!-- 
+        <!--
         <ul style="margin-left: auto;">
             <li>
-                <a type="button" href="/dashboard">Dashboard</a>
+                <a type="button" href="/login">Dashboard</a>
             </li>
             
             <li>
                 <a onclick={logOff} class="secondary" href="/registrar">Logout</a>
             </li>
         </ul>
-        -->
+         -->
     </nav>
     <div class="spacer"></div>
 </header>

@@ -1,16 +1,11 @@
 ---
 import Layout from "../components/site/Layout.astro"
-import LoginComponent from "../components/site/Login.astro"
+import LoginForm from "../components/site/LoginForm.vue"
 ---
 
 <Layout>
     <div class="grid container">
-        <LoginComponent/>
+        <LoginForm client:load/>
         <div></div>
     </div>
-
-    <script type="module">
-        import { client } from './scripts/Supabase.js'
-        console.log(client.client)
-    </script>
 </Layout>

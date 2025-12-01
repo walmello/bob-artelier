@@ -1,5 +1,5 @@
 ---
-import Navbar from "./Navbar.astro"
+import Navbar from "./Navbar.vue"
 import Footer from './Footer.astro'
 ---
 
@@ -18,7 +18,7 @@ import Footer from './Footer.astro'
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
-	<Navbar/>
+	<Navbar client:load/>
 	<main>
 		<slot/>
 	</main>

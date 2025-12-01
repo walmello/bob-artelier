@@ -9,10 +9,10 @@
         const {data, error} = await supabase.auth.signInWithPassword({email: email.value, password: password.value})
         if(error){
             console.log(error)
-            feedback = "Deu erro"
+            feedback.value = "Deu erro"
         }
         console.log('logado!')
-        //window.location.href = './dashboard'
+        window.location.href = './dashboard'
     }
 </script>
 

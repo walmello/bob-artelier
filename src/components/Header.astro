@@ -5,8 +5,8 @@ import logo from '../assets/bob-icon.svg';
 
 <script>
     import { getUser, logoff } from "../scripts/Supabase";
-    (window as any).getUser = getUser
-    (window as any).logoff = getUser
+    (window as any).getUser = getUser;
+    (window as any).logoff = logoff;
     window.dispatchEvent(new Event('getUserReady'))
 </script>
 

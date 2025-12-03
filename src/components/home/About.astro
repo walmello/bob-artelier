@@ -1,0 +1,35 @@
+---
+import Image from "astro/components/Image.astro";
+import bob from '../../assets/foto-bob.jpg';
+---
+
+<section class="container grid" id="about">
+    <div>
+        <Image src={bob} alt="Foto do bob" style="width: 100%"/>
+    </div>
+    <div class="container">
+        <h2>Quem sou eu?</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod libero impedit fugit. Voluptas consequuntur ipsam itaque, enim delectus quasi accusamus dolores neque dolore inventore corrupti vitae soluta eaque veritatis suscipit!</p>
+        <div>
+            <p>Siga-me nas redes sociais</p>
+            <div class="social">
+                <a href="#">Instagram</a>
+                <a href="#">Behance</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    section {
+        min-height: 60vh;
+        gap: 4rem;
+        padding: 5rem 0;
+    }
+
+    .social {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+</style>

@@ -1,0 +1,79 @@
+---
+import Image from "astro/components/Image.astro"
+import { getCourses } from "../../scripts/Baserow.js"
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+const courses = await getCourses()
+---
+
+<script>
+    import Swiper from 'swiper';
+    import { register } from 'swiper/element/bundle';
+    register();
+
+    const swiper = new Swiper('.swiper', {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        pagination: {
+            el: '.swiper-pagination',
+            renderBullet: function (index, className) {
+                return '<span class="' + className + '">'+ '</span>';
+            },
+            clickable: true
+        },
+        breakpoints: {
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 16,
+            },
+            767: {
+                slidesPerView: 3,
+                spaceBetween: 16,
+            },
+            440: {
+                slidesPerView: 2,
+                spaceBetween: 16,
+            }
+        }
+    })
+</script>
+
+<section class="container" id="courses">
+    <h2>Uma escola de verdade para artistas de verdade</h2>
+    <p>temos cursos sob medida para artistas e designers exigentes que estão sempre procurando evoluir suas habilidades</p>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            {
+                courses.map((course: any) => <div class="swiper-slide">
+                    <div>
+                        <Image class="img" src={course.image} alt="" inferSize={true}/>
+                        <h3>{course.name}</h3>
+                    </div>
+                </div>
+            )}
+        </div>
+        <div class="swiper-pagination"></div>        
+    </div>
+</section>
+
+<style>
+    section {
+        min-height: 60vh;
+    }
+
+    .img {
+        width: 100%;
+    }
+
+    .swiper-wrapper {
+        width: 100%;
+    }
+
+    @media (max-width: 1024px) {
+        .swiper {
+            
+        }
+    }
+</style>

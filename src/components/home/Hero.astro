@@ -1,0 +1,41 @@
+<section class="container" id="hero">
+    <h1>Libere a sua criatividade</h1>
+    <p>Somos a escola de design para aqueles que sempre exploram o seu potencial</p>
+    <div class="button-wrapper">
+        <a role="button" href="#">Cadastre-se Grátis</a>
+        <a role="button" href="#">Veja nossos cursos</a>
+    </div>
+</section>
+
+<style>
+    section {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 80vh;
+        justify-content: center;
+        padding-bottom: 2rem;
+    }
+
+    .button-wrapper {
+        display: flex;
+        gap: 1rem;
+    }
+
+    @media (max-width: 573px) {
+        .button-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .button-wrapper > * {
+            width: 80vw;
+        }
+
+        section {
+            align-items: center;
+            justify-content: end;
+        }
+    }
+</style>

@@ -1,0 +1,47 @@
+---
+import Image from "astro/components/Image.astro";
+import { getTestimonials } from "../../scripts/Baserow";
+const testimonials = await getTestimonials()
+---
+
+<section class="container">
+    <h2>O que os alunos tem a dizer sobre o curso?</h2>
+    <p>Alunos de verdade que encontraram seu potencial criativo</p>
+    <div class="testimonials">
+        {
+        testimonials.map((testimonial: any) => <article>
+            <Image src={testimonial.image} alt="" inferSize={true} />
+            <h3>{testimonial.name}</h3>
+            <p>{testimonial.text}</p>
+            <small>{testimonial.role}</small>
+        </article>)
+        }
+    </div>
+</section>
+
+<style>
+    .testimonials {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .testimonials > * {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    @media (max-width: 1024px) {
+        .testimonials {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .testimonials {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+</style>    

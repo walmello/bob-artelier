@@ -1,0 +1,76 @@
+---
+import Image from 'astro/components/Image.astro';
+import logo from '../assets/bob-icon.svg';
+---
+
+<header>
+    <nav class="container-fluid">
+        <ul>
+            <li><a href="/#courses">Cursos</a></li>
+            <li><a href="/#about">Sobre Mim</a></li>
+            <li><a href="/#gallery">Galeria</a></li>
+            <li><a href="/#community">Comunidade</a></li>
+            <li><a href="/#faq">Perguntas</a></li>
+        </ul>
+        <a href="/#hero">
+            <Image class="logo" src={logo} alt={'Bob logo'}/>
+        </a>
+        <ul>
+            <li><a role="button" href="/login">Login</a></li>
+            <li><a role="button" href="/registrar">Registrar</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="spacer"></div>
+
+<style>
+    .spacer {
+        height:6rem;
+    }
+
+    header {
+        padding: 0.5rem 0;
+        margin: 0;
+        position: fixed;
+        background-color: white;
+        z-index: 99999;
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
+
+    nav {
+        display: grid;
+        grid-template-columns: 10fr 1fr 10fr;
+        align-items: center;
+    }
+
+    nav > *:nth-child(2){
+        margin: auto;
+    }
+
+    nav > *:nth-child(3) {
+        margin-left: auto;
+    }
+
+    @media (max-width: 1024px) {
+        nav {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .logo {
+            width: 3rem;
+        }
+
+        nav > ul:first-child {
+            display: none;
+        }
+
+        nav > *:nth-child(2) {
+            margin: 0;
+        }
+        nav > *:nth-child(3) {
+            margin-left: auto;
+        }
+    }
+</style>

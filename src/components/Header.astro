@@ -13,8 +13,8 @@ import logo from '../assets/bob-icon.svg';
     user: null,
     async init(){
         this.$nextTick(async () => {
-            this.user = await getUser()
             this.loading = false
+            this.user = await window.getUser()
         })
     }
 }">

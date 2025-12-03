@@ -1,0 +1,33 @@
+<footer class="container" >
+    <img src="" alt="">
+    <div class="grid" style="text-align: center;">
+        <a href=""><small>Política de privacidade</small></a>
+        <small class="copyright">
+            Este site e plataforma foi feito com inteligência humana
+            por © Walter Melo - Design e Desenvolvimento
+        </small>
+        <a href=""><small>Termos e condições</small></a>
+    </div>
+</footer>
+
+<style>
+    footer > div {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .copyright {
+        max-width: 24rem;
+        margin: auto;
+    }
+
+    @media (max-width: 767px) {
+        footer > div {
+            flex-direction: column;
+        }
+
+        footer > div > *:nth-child(2) {
+            order: 3;
+        }
+    }
+</style>

@@ -37,17 +37,13 @@ export const getUser = async () => {
         const { data: { user }, error } = await supabase.auth.getUser()
         if(error) throw new Error(error.message)
         localStorage.setItem('user', JSON.stringify(user))
-        console.log('fetching user')
         return user
     } else {
-        console.log('saved user')
         return savedUser
     }
 }
 
 export const logoff = async (params) => {
-    localStorage.clear()
     const { error } = await supabase.auth.signOut()
     if(error) throw new Error(error.message)
-    window.location.href = '/'
 }

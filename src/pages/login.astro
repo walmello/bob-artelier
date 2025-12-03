@@ -36,7 +36,7 @@ import image from '../assets/image.jpg';
         @submit.prevent="submit">
             <article>
                 <h1>Fazer login</h1>
-                <div class="alert" x-show="feedback">
+                <div class="alert" x-cloak x-show="feedback">
                     <ul>
                         <li x-text="feedback"></li>
                     </ul>

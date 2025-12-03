@@ -6,16 +6,19 @@ import logo from '../assets/bob-icon.svg';
 <script>
     import { getUser } from "../scripts/Supabase";
     (window as any).getUser = getUser
+    window.dispatchEvent(new Event('getUserReady'))
 </script>
 
 <header x-data="{
     loading: true,
     user: null,
     async init(){
-        this.$nextTick(async () => {
-            this.loading = false
-            this.user = await window.getUser()
+        this.loading = false
+        await new Promise(resolve => {
+            if (window.getUser) return resolve();
+            window.addEventListener('getUserReady', resolve, { once: true });
         })
+        this.user = await getUser()
     }
 }">
 <nav class="container-fluid">

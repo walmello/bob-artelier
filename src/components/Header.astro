@@ -1,15 +1,12 @@
 ---
 import Image from 'astro/components/Image.astro';
-import logo from '../../assets/bob-icon.svg';
+import logo from '../assets/bob-icon.svg';
 ---
 
 <script>
-<<<<<<< HEAD
-    import { getUser, logoff } from "../../scripts/Supabase";
-=======
-    import { getUser } from "../scripts/Supabase";
->>>>>>> parent of 9631bb3 (loading to buttons)
+    import { getUser, logoff } from "../scripts/Supabase";
     (window as any).getUser = getUser
+    (window as any).logoff = getUser
     window.dispatchEvent(new Event('getUserReady'))
 </script>
 
@@ -43,8 +40,8 @@ import logo from '../../assets/bob-icon.svg';
             <li><a role="button" href="/registrar">Registrar</a></li>
         </ul>
         <ul x-show="user" x-cloak>
-            <li><a role="button" href="#">Entrar</a></li>
-            <li><a role="button" href="#">Sair</a></li>
+            <li><a role="button" href="/dashboard">Entrar</a></li>
+            <li><a role="button" @click="logoff" >Sair</a></li>
         </ul>
     </div>
 </nav>

@@ -46,6 +46,8 @@ export const getUser = async () => {
 }
 
 export const logoff = async (params) => {
+    localStorage.clear()
     const { error } = await supabase.auth.signOut()
     if(error) throw new Error(error.message)
+    window.location.href = '/'
 }

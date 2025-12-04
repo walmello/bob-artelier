@@ -39,10 +39,21 @@ import logo from '../assets/bob-icon.svg';
             <li><a role="button" href="/login">Login</a></li>
             <li><a role="button" href="/registrar">Registrar</a></li>
         </ul>
-        <ul x-show="user" x-cloak>
-            <li><a role="button" href="/dashboard">Entrar</a></li>
-            <li><a role="button" @click="logoff" >Sair</a></li>
-        </ul>
+        <div x-show="user" x-cloak>
+            <ul >
+                <li><a href="/cursos">Meus cursos</a></li>
+                <li><a @click="logoff" href="#" >Sair</a></li>
+                <li>
+                    <a href="/profile">
+                        <div class="avatar">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 4C13.0609 4 14.0783 4.42143 14.8284 5.17157C15.5786 5.92172 16 6.93913 16 8C16 9.06087 15.5786 10.0783 14.8284 10.8284C14.0783 11.5786 13.0609 12 12 12C10.9391 12 9.92172 11.5786 9.17157 10.8284C8.42143 10.0783 8 9.06087 8 8C8 6.93913 8.42143 5.92172 9.17157 5.17157C9.92172 4.42143 10.9391 4 12 4ZM12 14C16.42 14 20 15.79 20 18V20H4V18C4 15.79 7.58 14 12 14Z" fill="black"/>
+                            </svg>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 </header>
@@ -50,7 +61,20 @@ import logo from '../assets/bob-icon.svg';
 
 <style>
     .spacer {
-        height:6rem;
+        height:8rem;
+    }
+    
+    .avatar {
+        width: 3rem;
+        height: 3rem;
+        background-color: bisque;
+        border-radius: 999rem;
+    }
+    
+    .avatar svg {
+        width: 100%;
+        height: 100%;
+        padding: 0.5rem;
     }
     
     header {

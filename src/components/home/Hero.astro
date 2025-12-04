@@ -1,41 +1,82 @@
-<section class="container" id="hero">
-    <h1>Libere a sua <br>criatividade</h1>
-    <p>Somos a escola de design para aqueles que sempre exploram o seu potencial</p>
-    <div class="button-wrapper">
-        <a role="button" href="#">Cadastre-se Grátis</a>
-        <a role="button" href="#">Veja nossos cursos</a>
+<section class="container grid" id="hero">
+    <div>
+        IMAGEM AQUI
+    </div>
+    <div>
+        <h1>Libere a sua <br>criatividade</h1>
+        <div class="wrapper">
+            <div class="box">
+                <p>Somos a escola de design para aqueles que sempre exploram o seu potencial</p>
+            </div>
+            <div class="button-wrapper">
+                <a role="button" href="#">Cadastre-se Grátis</a>
+            </div>
+        </div>
     </div>
 </section>
 
 <style>
     section {
         text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         min-height: 80vh;
-        justify-content: center;
-        padding-bottom: 2rem;
+        align-items: center;
+        padding-bottom: 10rem;
     }
 
+    .box {
+        border: 2px solid black;
+        width: fit-content;
+        padding: 1rem;
+        box-shadow: 0.5rem 0.5rem 0 black;
+        background-color: white;
+        text-transform: uppercase;
+        letter-spacing: -0.02rem;
+    }
+
+    .box p {
+        font-weight: bold;
+    }
+
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+        gap: 2rem;
+    }
+
+    section > *:nth-child(2){
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        text-align: start;
+    }
+    
     .button-wrapper {
         display: flex;
         gap: 1rem;
     }
-
+    
     @media (max-width: 573px) {
         .button-wrapper {
             display: flex;
             flex-direction: column;
         }
 
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        
         .button-wrapper > * {
             width: 80vw;
         }
-
+        
         section {
-            align-items: center;
+            align-items: end;
             justify-content: end;
+            padding-bottom: 2rem;
         }
     }
 </style>

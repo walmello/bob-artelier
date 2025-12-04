@@ -1,3 +1,10 @@
+---
+import '@fontsource/bangers';
+import '@fontsource/comic-neue';
+
+import texture from '../assets/grunge-texture.png';
+---
+
 <!doctype html>
 <html lang="en" data-theme="light">
 <head>
@@ -25,22 +32,67 @@
 	html {
 		scroll-behavior: smooth;
 		scroll-padding-top: 10rem;
+		font-family: 'Comic Neue', cursive;
 	}
-
+	
+	body {
+		font-size: 1rem;
+	}
+	
+	
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
 	}
-
-	body {
-		font-size: 0.8rem;
+	
+	h1, h2, h3, h4, h5, h6 {
+		font-family: 'Bangers', system-ui;
 	}
-
+	
+	h1 {
+		font-size: 5rem;
+	}
+	
+	
 	article {
 		box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
 	}
-
+	
+	[role="button"]{
+		border-radius: 0;
+		border: none;
+		border: 5px solid black;
+		font-family: 'Bangers', system-ui;
+		background-color: yellow;
+		background: url('./images/texture.png'), yellow;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-blend-mode: multiply;
+		color: black;
+		box-shadow: 0.5rem 0.5rem 0 black;
+	}
+	
+	
+	h1 {
+		color: yellow;
+		--border: 4px;
+		--border-n: -4px;
+		text-shadow: var(--border-n) var(--border-n) 0 #000, var(--border) var(--border-n) 0 #000, var(--border-n) var(--border) 0 #000, var(--border) var(--border) 0 #000, 8px 8px 0 #000;
+		font-size: 5rem;
+		letter-spacing: 0.1rem;
+	}
+	
+	h2 {
+		color: yellow;
+		--border: 2px;
+		--border-n: -2px;
+		text-shadow: var(--border-n) var(--border-n) 0 #000, var(--border) var(--border-n) 0 #000, var(--border-n) var(--border) 0 #000, var(--border) var(--border) 0 #000, 4px 4px 0 #000;
+		font-size: 2.5rem;
+		letter-spacing: 0.1rem;
+	}
+	
 	[x-cloak] { display: none !important; }
 </style>

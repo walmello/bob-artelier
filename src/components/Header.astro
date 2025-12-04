@@ -1,6 +1,6 @@
 ---
 import Image from 'astro/components/Image.astro';
-import logo from '../assets/bob-icon.svg';
+import logo from '../assets/bob-logo.svg';
 ---
 
 <script>
@@ -23,7 +23,7 @@ import logo from '../assets/bob-icon.svg';
     }
 }">
 <nav class="container-fluid">
-    <ul>
+    <ul class="main-menu">
         <li><a href="/#courses">Cursos</a></li>
         <li><a href="/#about">Sobre Mim</a></li>
         <li><a href="/#gallery">Galeria</a></li>
@@ -63,6 +63,24 @@ import logo from '../assets/bob-icon.svg';
     .spacer {
         height:8rem;
     }
+
+    header {
+        z-index: 99999;
+    }
+
+    .main-menu {
+        border: 2px solid black;
+        width: fit-content;
+        padding: 0 0.5rem;
+        box-shadow: 0.5rem 0.5rem 0 black;
+        background-color: white;
+        z-index: 99999;
+    }
+
+    .main-menu a {
+        color: black;
+        font-weight: bold;
+    }
     
     .avatar {
         width: 3rem;
@@ -81,9 +99,7 @@ import logo from '../assets/bob-icon.svg';
         padding: 0.5rem 0;
         margin: 0;
         position: fixed;
-        background-color: white;
         z-index: 99999;
-        box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
         width: 100%;
     }
     

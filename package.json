@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/bangers": "^5.2.8",
+    "@fontsource/comic-neue": "^5.2.7",
     "@supabase/supabase-js": "^2.86.0",
     "astro": "^5.16.0",
     "axios": "^1.13.2",

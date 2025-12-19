@@ -33,6 +33,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 a, p {
@@ -98,7 +99,7 @@ section {
     }
 }
 
-[role='button']{
+button,[role='button']{
     background-color: white;
     border: 2px solid black;
     border-radius: 0;
@@ -109,7 +110,7 @@ section {
     transition: all 0.2s ease-in;
 }
 
-[role="button"]:hover{
+button:hover ,[role="button"]:hover{
     transform: translateX(-0.2em);
     transform: translateY(-0.2em);
     transition: all 0.05s ease-in;
@@ -117,7 +118,7 @@ section {
     background-color: #aaf;
 }
 
-[role="button"]:active {
+button:active ,[role="button"]:active {
     transform: translateX(0);
     transform: translateY(0);
     box-shadow: 0.1em 0.1em 0 #000a;

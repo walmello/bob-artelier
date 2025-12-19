@@ -69,7 +69,7 @@ import Layout from "../components/layout/Layout.astro"
             </small>            
         </div>
         <article>
-            <h1>Fazer Login</h1>
+            <h1>Criar Conta</h1>
             <form action="">
                 <label>
                     Email:
@@ -79,7 +79,14 @@ import Layout from "../components/layout/Layout.astro"
                     Senha:
                     <input type="text">
                 </label>
-                <button role="button">Fazer Login</button>
+                <label>
+                    Confirmar Senha:
+                    <input type="text">
+                </label>
+                <label for="">
+                    <input type="checkbox"> Confirmo que li e concordo com os termos e condições abaixo
+                </label>
+                <button role="button">Cadastrar</button>
             </form>
         </article>
     </section>
@@ -89,6 +96,12 @@ import Layout from "../components/layout/Layout.astro"
     section {
         align-items: baseline;
         position: relative;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
     }
 
     section article {

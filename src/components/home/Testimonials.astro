@@ -1,6 +1,6 @@
 ---
 
-const request = await fetch('https://api.baserow.io/api/database/rows/table/759955/?user_field_names=true&size=3',{
+const request = await fetch('https://api.baserow.io/api/database/rows/table/759955/?user_field_names=true',{
     headers: {
         Authorization: "Token yGfiMmcSdFgOvD9TJjbEueSiMEkHFegC"
     }
@@ -14,6 +14,7 @@ const testimonials = (await request.json()).results.map(testimonial => ({
 
 import Image from 'astro/components/Image.astro';
 import heroImg from './assets/hero.png'
+import Slider from '../elements/Slider.astro';
 ---
 
 
@@ -23,7 +24,7 @@ import heroImg from './assets/hero.png'
             <h2>O que os alunos dizem sobre o curso?</h2>
             <a href="" role="button">Ver depoimentos</a>
         </div>
-        <section class="courses">
+        <Slider size={25}>
             {
                 testimonials.map((testimonial) =>
                 <article class="testimonial">
@@ -38,11 +39,15 @@ import heroImg from './assets/hero.png'
                 </article>
                 )
             }
-        </section>
+        </Slider>
     </div>
 </section>
 
 <style>
+    article {
+        flex: 0 0 25rem;
+    }
+
     .testimonial img {
         
     }

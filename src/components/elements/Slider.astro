@@ -1,0 +1,154 @@
+---
+import Image from 'astro/components/Image.astro';
+import heroImg from './assets/hero.png'
+
+const {each = 3, size = 20} = Astro.props;
+---
+
+<div x-data={`{
+    dots: [],
+    each: ${each},
+    current: 0,
+    size: ${size},
+    xPos(){
+        return this.current * (this.size + 1)
+    },
+    next(){
+        if(this.current >= this.dots.length-1){
+            this.current = 0
+        } else {
+            this.current++
+        }
+    },
+    previous(){
+        if(this.current == 0){
+            this.current = this.dots.length -1
+        } else {
+            this.current--
+        }
+    },
+    init(){
+        this.$nextTick(() => {
+            const courses = this.$refs.courses.children.length
+            this.dots = [...Array(courses).keys()]
+        })
+    }
+}`}>
+<div class="tracker">
+    <section class="courses" x-ref="courses" :style="`transform: translateX(${-xPos()}rem)`">
+        <slot/>
+    </section>            
+    <div class="row controls">
+        <button @click="previous"> &#8249; </button>
+        <button @click="next"> &#8250; </button>
+    </div>
+    <div class="row" style="justify-content: center; gap: 0.5rem">
+        <template x-for="(dot, i) in dots">
+            <div @click="current = i">
+                <div class="dot dot--selected" x-show="i == current"></div>
+                <div class="dot" x-show="i !== current"></div>
+            </div>
+        </template>
+    </div>
+</div>
+
+<style>
+    .tracker {
+        position: relative;
+    }
+
+    .dot {
+        width: 0.8rem;
+        height: 0.8rem;
+        border: 2px solid black;
+        border-radius: 100%;
+        background-color: white;
+    }
+    
+    .controls {
+        position: absolute;
+        width: 104%;
+        top: 45%;
+        left: -2%;
+    }
+    
+    .controls > * {
+        font-family: 'Comic Neue', sans-serif;
+        font-size: 2rem;
+        height: 3rem;
+        width: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 4px 4px 0 black;
+    }
+    
+    .dot--selected {
+        background-color: black;
+    }
+    
+    .courses {
+        flex-direction: row;   
+        display: flex;
+    }
+    
+    article {
+        flex: 0 0 20rem;
+    }
+    
+    @media (max-width: 980px) {
+        .courses {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .courses {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    
+    .course {
+        border: 1px solid black;
+        padding: 1rem;
+        min-height: 20rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+    } 
+    
+    .overlay {
+        background: linear-gradient(1deg,rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+        z-index: 0;
+    }
+    
+    .foreground {
+        z-index: 9;
+    }
+    
+    article {
+        position: relative;
+        color: white;
+    }
+    
+    h3 {
+        color: white;
+    }
+    
+    article img {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>

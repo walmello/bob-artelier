@@ -1,5 +1,5 @@
 ---
-const request = await fetch('https://api.baserow.io/api/database/rows/table/714529/?user_field_names=true&size=4',{
+const request = await fetch('https://api.baserow.io/api/database/rows/table/714529/?user_field_names=true',{
     headers: {
         Authorization: "Token yGfiMmcSdFgOvD9TJjbEueSiMEkHFegC"
     }
@@ -10,49 +10,56 @@ const courses = (await request.json()).results.map(course => ({
 }))
 import Image from 'astro/components/Image.astro';
 import heroImg from './assets/hero.png'
----
+import Slider from '../elements/Slider.astro';
 
+---
 <section id="courses">
     <div>
         <div class="row">
             <h2>Cursos sob medida <br><strong>De artista para artista</strong></h2>
             <a href="" role="button">Ver todos os cursos</a>
         </div>
-        <section class="courses">
+        <Slider>
             {
-                courses.map((course) =>
-                    <article class="course">
-                        <Image src={course.image} inferSize={true} alt={''}/>
-                        <div class="foreground">
-                            <h3>{course.name}</h3>
-                            <a href="/">Ver curso</a>
-                        </div>
-                        <div class="overlay"></div>
-                    </article>
+                courses.map((obj) =>
+                <article class="course">
+                    <Image src={obj.image} inferSize={true} alt={''}/>
+                    <div class="foreground">
+                        <h3>{obj.name}</h3>
+                        <a href="/">Ver curso</a>
+                    </div>
+                    <div class="overlay"></div>
+                </article>
                 )
             }
-        </section>
+        </Slider>
     </div>
+</div>
 </section>
 
 <style>
     .courses {
         flex-direction: row;   
+        display: flex;
     }
-
+    
+    article {
+        flex: 0 0 20rem;
+    }
+    
     @media (max-width: 980px) {
         .courses {
             grid-template-columns: 1fr 1fr;
         }
     }
-
+    
     @media (max-width: 480px) {
         .courses {
             grid-template-columns: 1fr;
         }
     }
-
-
+    
+    
     .course {
         border: 1px solid black;
         padding: 1rem;
@@ -61,7 +68,7 @@ import heroImg from './assets/hero.png'
         flex-direction: column;
         justify-content: end;
     } 
-
+    
     .overlay {
         background: linear-gradient(1deg,rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
         width: 100%;
@@ -72,20 +79,20 @@ import heroImg from './assets/hero.png'
         pointer-events: none;
         z-index: 0;
     }
-
+    
     .foreground {
         z-index: 9;
     }
-
+    
     article {
         position: relative;
         color: white;
     }
-
+    
     h3 {
         color: white;
     }
-
+    
     article img {
         width: 100%;
         position: absolute;
@@ -96,3 +103,5 @@ import heroImg from './assets/hero.png'
         object-fit: cover;
     }
 </style>
+
+-->

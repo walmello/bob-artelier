@@ -37,7 +37,7 @@ import select from './assets/cursorSelect.svg';
         })
     }
 }">
-<div x-cloak :class="{pointing}" x-show="visible" class="cursor" :style="`left: ${left || 0}px; top: ${top || 0}px`">
+<div id="cursor" x-cloak :class="{pointing}" x-show="visible" class="cursor" :style="`left: ${left || 0}px; top: ${top || 0}px`">
     <div class="wrapper">
         <span x-cloak>
             <Image src={shadow} alt={''}/>
@@ -51,8 +51,10 @@ import select from './assets/cursorSelect.svg';
 </div>
 
 <style is:global>
-    * {
-        cursor: none !important;
+    @media (min-width: 767px) {
+        * {
+            cursor: none !important;
+        }
     }
 </style>
 

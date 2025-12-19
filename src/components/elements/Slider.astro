@@ -42,7 +42,7 @@ const {each = 3, size = 20} = Astro.props;
         <button @click="previous"> &#8249; </button>
         <button @click="next"> &#8250; </button>
     </div>
-    <div class="row" style="justify-content: center; gap: 0.5rem">
+    <div class="dots" style="display: flex ;justify-content: center; gap: 0.5rem">
         <template x-for="(dot, i) in dots">
             <div @click="current = i">
                 <div class="dot dot--selected" x-show="i == current"></div>
@@ -52,11 +52,13 @@ const {each = 3, size = 20} = Astro.props;
     </div>
 </div>
 
+<div class="spacer"></div>
+
 <style>
     .tracker {
         position: relative;
     }
-
+    
     .dot {
         width: 0.8rem;
         height: 0.8rem;
@@ -70,13 +72,14 @@ const {each = 3, size = 20} = Astro.props;
         width: 104%;
         top: 45%;
         left: -2%;
+        flex-direction: row;
     }
     
     .controls > * {
         font-family: 'Comic Neue', sans-serif;
         font-size: 2rem;
-        height: 3rem;
-        width: 3rem;
+        height: 3rem !important;
+        width: 3rem !important;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -94,20 +97,7 @@ const {each = 3, size = 20} = Astro.props;
     
     article {
         flex: 0 0 20rem;
-    }
-    
-    @media (max-width: 980px) {
-        .courses {
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .courses {
-            grid-template-columns: 1fr;
-        }
-    }
-    
+    }    
     
     .course {
         border: 1px solid black;
@@ -150,5 +140,29 @@ const {each = 3, size = 20} = Astro.props;
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+    
+    @media (max-width: 767px) {
+        .tracker {
+            position: absolute;
+            left: 0;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            overflow-x: scroll;
+        }
+
+        .spacer {
+            width: 100%;
+            height: 25rem;
+        }
+
+        .controls {
+            display: none;
+        }
+
+        .dots {
+            display: none !important;
+        }
     }
 </style>

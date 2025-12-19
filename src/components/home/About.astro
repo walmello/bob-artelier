@@ -1,12 +1,12 @@
 ---
 import Image from 'astro/components/Image.astro'
-import heroImg from './assets/hero.png'
+import foto from './assets/foto-bob.jpg'
 import instagram from './assets/instagram.svg'
 ---
 
 <section id="about">
     <div>
-        <Image src={heroImg} alt={''}/>
+        <Image src={foto} alt={'Minha foto, estou sentado numa mesa com algumas action figures e microfones em cima'}/>
     </div>
     <div>
         <h2>Oi, eu sou o Bob</h2>
@@ -16,6 +16,6 @@ import instagram from './assets/instagram.svg'
         <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde dicta exercitationem accusantium voluptas distinctio vero nulla a sapiente eius dignissimos, autem iusto odio, voluptate architecto. A cum nam dignissimos culpa.
         </p>
-        <p>Siga me nas redes sociais <a href=""><Image src={instagram} alt={''}/></a></p>
+        <p>Siga me nas redes sociais <a href="https://www.instagram.com/bob_artelie/" target="_blank"><Image src={instagram} alt={'Instagram'}/></a></p>
     </div>
 </section>

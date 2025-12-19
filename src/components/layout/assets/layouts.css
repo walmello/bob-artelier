@@ -4,6 +4,12 @@
     scroll-behavior: smooth;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 a, p {
     font-weight: bold;
 }

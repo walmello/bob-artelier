@@ -22,6 +22,9 @@
   font-display: swap;
 }
 
+:root {
+    --default-transition: all 0.2s linear(0, 0.1, 0.25, 0.5, 0.68, 0.8, 0.88, 0.94, 0.98, 0.995, 1);
+}
 
 html {
     font-family: 'Comic Neue', sans-serif;
@@ -107,7 +110,7 @@ button,[role='button']{
 button:hover ,[role="button"]:hover{
     transform: translateX(-0.2em);
     transform: translateY(-0.2em);
-    transition: all 0.05s ease-in;
+    transition: var(--default-transition);
     box-shadow: 0.4em 0.4em 0 #000a;
     background-color: #aaf;
 }
@@ -134,7 +137,7 @@ article {
 article:hover {
     transform: translateX(-0.2em);
     transform: translateY(-0.2em);
-    transition: all 0.05s ease-in;
+    transition: var(--default-transition);
     box-shadow: 0.4em 0.4em 0 #000a;
 }
 

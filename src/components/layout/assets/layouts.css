@@ -1,4 +1,29 @@
- html {
+@font-face {
+  font-family: 'Bangers';
+  src: url('./fonts/Bangers/Bangers-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Comic Neue';
+  src: url('./fonts/Comic_Neue/ComicNeue-Bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Comic Neue';
+  src: url('./fonts/Comic_Neue/ComicNeue-Bold.ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+html {
     font-family: 'Comic Neue', sans-serif;
     interpolate-size: allow-keywords;
     scroll-behavior: smooth;

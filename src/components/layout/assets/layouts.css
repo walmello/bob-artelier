@@ -26,6 +26,7 @@
 html {
     font-family: 'Comic Neue', sans-serif;
     interpolate-size: allow-keywords;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -69,11 +70,6 @@ h1 {
 
 h2 {
     font-size: 2rem;
-}
-
-
-* {
-    transition: 0.2s all ease-in;
 }
 
 [x-cloak] { display: none !important; opacity: 0; }

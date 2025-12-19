@@ -13,14 +13,21 @@ import Cursor from '../elements/Cursor.astro';
     <title>Bob Artelier</title>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js" integrity="sha384-/TgkGk7p307TH7EXJDuUlgG3Ce1UVolAOFopFekQkkXihi5u/6OCvVKyz1W+idaz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/htmx-ext-head-support@2.0.5" integrity="sha384-cvMqHzjCJsOHgGuyB3sWXaUSv/Krm0BdzjuI1rtkjCbL1l1oHJx+cHyVRJhyuEz0" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/htmx-ext-head-support@2.0.5" integrity="sha384-cvMqHzjCJsOHgGuyB3sWXaUSv/Krm0BdzjuI1rtkjCbL1l1oHJx+cHyVRJhyuEz0" crossorigin="anonymous"></script>    
 </head>
 <body hx-boost="true" hx-ext="head-support">
     <Header/>
-    <main>
+    <main id="main" hx-swap="outerHTML swap:1s">
         <slot></slot>
     </main>
     <Footer/>
     <Cursor>
 </body>
 </html>
+
+<style>
+    main.htmx-swapping {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+    }
+</style>

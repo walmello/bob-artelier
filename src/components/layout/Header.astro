@@ -7,7 +7,7 @@ import logo from './assets/logo.svg'
 	open: false
 }">
 <div class="overlay" x-cloak :style="{opacity: open ? '100%' : '0%'}"></div>
-<header>
+<header hx-preserve id="header">
 	<nav>
 		<a href="/#hero"><Image src={logo} alt={'Bob artelier logo'} /></a>
 		<a aria-controls="menu" style="font-size: 2rem;" @click="open = !open">

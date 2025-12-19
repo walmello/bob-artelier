@@ -1,0 +1,133 @@
+ html {
+    font-family: 'Comic Neue', sans-serif;
+    interpolate-size: allow-keywords;
+    scroll-behavior: smooth;
+}
+
+a, p {
+    font-weight: bold;
+}
+
+h1,h2,h3,button {
+    font-family: 'Bangers', sans-serif;
+    font-weight: normal;
+}
+
+h1 strong {
+    color: white;
+    --border: 4px;
+    --border-n: -4px;
+    text-shadow: var(--border-n) var(--border-n) 0 #000, var(--border) var(--border-n) 0 #000, var(--border-n) var(--border) 0 #000, var(--border) var(--border) 0 #000, 8px 8px 0 #000;
+}
+
+h2 strong {
+    color: white;
+    --border: 2px;
+    --border-n: -2px;
+    text-shadow: var(--border-n) var(--border-n) 0 #000, var(--border) var(--border-n) 0 #000, var(--border-n) var(--border) 0 #000, var(--border) var(--border) 0 #000, 4px 4px 0 #000;
+}
+
+p {
+    font-family: 'Comic Neue', sans-serif;
+    letter-spacing: -0.02rem;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+
+* {
+    transition: 0.2s all ease-in;
+}
+
+[x-cloak] { display: none !important; opacity: 0; }
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+    gap: 1rem;
+    align-items: center;
+}        
+
+@media (max-width: 767px) {
+    section {
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+}
+
+[role='button']{
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 0;
+    font-family: 'Bangers', sans-serif;
+    color: black;
+    letter-spacing: 0.05rem;
+    box-shadow: 0.2em 0.2em 0 black;
+    transition: all 0.2s ease-in;
+}
+
+[role="button"]:hover{
+    transform: translateX(-0.2em);
+    transform: translateY(-0.2em);
+    transition: all 0.05s ease-in;
+    box-shadow: 0.4em 0.4em 0 #000a;
+    background-color: #aaf;
+}
+
+[role="button"]:active {
+    transform: translateX(0);
+    transform: translateY(0);
+    box-shadow: 0.1em 0.1em 0 #000a;
+}
+
+
+
+article {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 0;
+    font-family: 'Bangers', sans-serif;
+    color: black;
+    letter-spacing: 0.05rem;
+    box-shadow: 0.2em 0.2em 0 black;
+    transition: all 0.2s ease-in;
+}
+
+article:hover {
+    transform: translateX(-0.2em);
+    transform: translateY(-0.2em);
+    transition: all 0.05s ease-in;
+    box-shadow: 0.4em 0.4em 0 #000a;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 767px) {
+    .row {
+        flex-direction: column;
+        align-items: baseline;
+        padding-block: 1rem;
+    }    
+}
+
+@media (max-width: 480px) {
+    [role="button"]{
+        width: 100%;
+    }
+}

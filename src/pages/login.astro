@@ -1,102 +1,33 @@
 ---
-import Image from "astro/components/Image.astro";
-import image from '../assets/image.jpg';
-import Layout from "../components/Layout.astro";
+import Layout from "../components/layout/Layout.astro"
+import Image from 'astro/components/Image.astro';
+import logo from "../components/home/assets/hero.png";
 ---
 
-<script>
-    import { login } from '../scripts/Supabase.js';
-
-    (window as any).login = login
-</script>
-
 <Layout>
-    <section class="container grid">
+    <section>
         <div>
-            <Image src={image} alt="" style="width: 100%"/>
+            <Image src={logo} alt={'Bob artelier logo'} />
         </div>
-        <form 
-        hx-boost="false"
-        x-data="{
-            email: '',
-            password: '',
-            feedback: '',
-            async submit(){
-                try{
-                    if(!this.email) throw new Error('Digite um email');
-                    if(!this.password) throw new Error('Digite uma senha');
-                    const data = await login(this.email, this.password)
-                    console.log(data)
-                }catch(err){
-                    console.log(err)
-                    this.feedback = err.message
-                }
-            }
-        }" 
-        @submit.prevent="submit">
-            <article>
-                <h1>Fazer login</h1>
-                <div class="alert" x-cloak x-show="feedback">
-                    <ul>
-                        <li x-text="feedback"></li>
-                    </ul>
-                    <div class="close" @click="feedback = ''">X</div>
-                </div>
+        <article>
+            <h1>Fazer Login</h1>
+            <form action="">
                 <label>
-                    Email: <br>
-                    <input type="email" x-model="email">
+                    Email:
+                    <input type="text">
                 </label>
                 <label>
-                    Senha: <br>
-                    <input type="password" x-model="password">
+                    Senha:
+                    <input type="text">
                 </label>
-                <button>Entrar</button>
-            </article>
-        </form>
+                <button role="button">Fazer Login</button>
+            </form>
+        </article>
     </section>
 </Layout>
 
 <style>
     button {
         width: 100%;
-    }
-
-    .alert {
-        background-color: rgba(255, 0, 0, 0.2);
-        border-radius: 0.2rem;
-        padding: 1rem;
-        position: relative;
-        margin-bottom: 2rem;
-    }
-
-    .alert ul  {
-        color: rgb(255, 0, 0);
-        margin: 0;
-        padding: 0;
-        padding-left: 1rem;
-    }
-
-    .alert .close {
-        position: absolute;
-        right: 0.5rem;
-        top: 0.5rem;
-        border-radius: 99999px;
-        background-color: rgba(220, 0, 0, 0.7);
-        color: white;
-        font-weight: bold;
-        height: 1.2rem;
-        width: 1.2rem;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-top: 0.1rem;
-        font-size: 0.8rem;
-        cursor: pointer;
-    }
-
-    .alert li {
-        margin: 0;
-        padding: 0;
     }
 </style>

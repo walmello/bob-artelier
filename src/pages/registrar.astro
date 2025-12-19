@@ -1,106 +1,130 @@
 ---
-import Image from "astro/components/Image.astro";
-import image from '../assets/image.jpg';
-import Layout from "../components/Layout.astro";
+import Layout from "../components/layout/Layout.astro"
 ---
 
-<script>
-    import { register } from '../scripts/Supabase.js';
-
-    (window as any).register = register
-</script>
-
 <Layout>
-    <section class="container grid">
+    <section>
         <div>
-            <Image src={image} alt="" style="width: 100%"/>
+            <small>
+                <h1>Termos e Condições</h1>
+                
+                <p>
+                    Este documento é um texto provisório (placeholder) e não possui valor legal.
+                    Seu conteúdo serve apenas para fins ilustrativos até a criação da versão final.
+                </p>
+                
+                <h2>1. Aceitação dos Termos</h2>
+                <p>
+                    Ao acessar este site, o usuário concorda, de forma fictícia, com os termos e condições aqui descritos.
+                    Este texto não representa um contrato real.
+                </p>
+                
+                <h2>2. Uso do Site</h2>
+                <p>
+                    O usuário compromete-se a utilizar este site apenas para fins lícitos e de acordo com
+                    as leis aplicáveis. Este parágrafo é meramente ilustrativo.
+                </p>
+                
+                <h2>3. Cadastro e Informações</h2>
+                <p>
+                    Algumas funcionalidades podem exigir o fornecimento de informações pelo usuário.
+                    Os dados informados são considerados fictícios neste contexto de placeholder.
+                </p>
+                
+                <h2>4. Propriedade Intelectual</h2>
+                <p>
+                    Todo o conteúdo apresentado neste site, incluindo textos, imagens e marcas,
+                    é protegido por direitos autorais de forma hipotética.
+                </p>
+                
+                <h2>5. Limitação de Responsabilidade</h2>
+                <p>
+                    O site não se responsabiliza por quaisquer danos diretos ou indiretos decorrentes
+                    do uso das informações aqui apresentadas. Texto apenas ilustrativo.
+                </p>
+                
+                <h2>6. Modificações dos Termos</h2>
+                <p>
+                    Estes Termos e Condições podem ser alterados a qualquer momento, sem aviso prévio,
+                    apenas para fins de demonstração.
+                </p>
+                
+                <h2>7. Links para Terceiros</h2>
+                <p>
+                    Este site pode conter links para sites externos, pelos quais não se responsabiliza.
+                    Este conteúdo é apenas um exemplo.
+                </p>
+                
+                <h2>8. Disposições Gerais</h2>
+                <p>
+                    Caso alguma disposição destes termos seja considerada inválida, as demais permanecerão
+                    vigentes, apenas em caráter ilustrativo.
+                </p>
+                
+                <h2>9. Contato</h2>
+                <p>
+                    Para dúvidas relacionadas a estes Termos e Condições, utilize os canais de contato
+                    fictícios disponíveis neste site.
+                </p>
+            </small>            
         </div>
-        <form 
-        hx-boost="false"
-        x-data="{
-            email: '',
-            password: '',
-            checkPassword: '',
-            feedback: '',
-            async submit(){
-                try{
-                    if(this.password !== this.checkPassword) throw new Error('Senhas não são iguais');
-                    const user = await register(this.email, this.password)
-                    console.log(user)
-                }catch(err){
-                    console.log(err)
-                    this.feedback = err.message
-                }
-            }
-        }" 
-        @submit.prevent="submit">
-            <article>
-                <h1>Criar conta</h1>
-                <div class="alert" x-cloak x-show="feedback">
-                    <ul>
-                        <li x-text="feedback"></li>
-                    </ul>
-                    <div class="close" @click="feedback = ''">X</div>
-                </div>
+        <article>
+            <h1>Fazer Login</h1>
+            <form action="">
                 <label>
-                    Email: <br>
-                    <input type="email" x-model="email">
+                    Email:
+                    <input type="text">
                 </label>
                 <label>
-                    Senha: <br>
-                    <input type="password" x-model="password">
+                    Senha:
+                    <input type="text">
                 </label>
-                <label>
-                    Repetir Senha: <br>
-                    <input type="password" x-model="checkPassword">
-                </label>
-                <button>Criar</button>
-            </article>
-        </form>
+                <button role="button">Fazer Login</button>
+            </form>
+        </article>
     </section>
 </Layout>
 
 <style>
+    section {
+        align-items: baseline;
+        position: relative;
+    }
+
+    section article {
+        position: sticky;
+        top: 7rem;
+    }
+
     button {
         width: 100%;
     }
 
-    .alert {
-        background-color: rgba(255, 0, 0, 0.2);
-        border-radius: 0.2rem;
-        padding: 1rem;
-        position: relative;
-        margin-bottom: 2rem;
+    small h1{
+        font-size: 2rem;
     }
 
-    .alert ul  {
-        color: rgb(255, 0, 0);
-        margin: 0;
-        padding: 0;
-        padding-left: 1rem;
+    small h2 {
+        font-size: 1.2rem;
     }
 
-    .alert .close {
-        position: absolute;
-        right: 0.5rem;
-        top: 0.5rem;
-        border-radius: 99999px;
-        background-color: rgba(220, 0, 0, 0.7);
-        color: white;
-        font-weight: bold;
-        height: 1.2rem;
-        width: 1.2rem;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-top: 0.1rem;
-        font-size: 0.8rem;
-        cursor: pointer;
-    }
+    @media (max-width: 767px) {
+        section {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: stretch;
+        }
 
-    .alert li {
-        margin: 0;
-        padding: 0;
+        section article {
+            position: static;
+            top: 7rem;
+        }
+
+        section div:has(small) {
+            max-height: 30vh;
+            overflow-y: scroll;
+            border: 2px solid #0001;
+            padding: 1rem;
+        }
     }
 </style>

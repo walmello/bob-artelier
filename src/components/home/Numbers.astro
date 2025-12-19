@@ -1,39 +1,111 @@
-<section class="container">
-    <div>
+<section id="numbers">
+    <div x-cloak x-data="{
+        value: 0,
+        max: 123,
+        tween: 16,
+        async init(){
+            const iObserver = new IntersectionObserver(
+                entries => {
+                    console.log(entries[0].isIntersecting);
+                    if(entries[0].isIntersecting){
+                        const interval = setInterval(() => {
+                        this.value += parseInt(this.tween)
+                        this.tween /= 5
+                        if(this.value >= this.max){
+                        this.value = this.max
+                        clearInterval(interval)
+                    }
+                    }, 100);
+                    }
+                }
+            );
+            iObserver.observe(this.$root);
+
+            
+        }
+    }">
+        <div class="counter"></div>
         <p>mais de</p>
-        <p>100</p>
-        <p>alunos ativos</p>
+        <p class="num" x-text="value">0</p>
+        <p>alunos</p>
     </div>
-    <div>
+    <div x-cloak x-data="{
+        value: 0,
+        max: 123,
+        tween: 16,
+        async init(){
+            const iObserver = new IntersectionObserver(
+                entries => {
+                    console.log(entries[0].isIntersecting);
+                    if(entries[0].isIntersecting){
+                        const interval = setInterval(() => {
+                        this.value += parseInt(this.tween)
+                        this.tween /= 5
+                        if(this.value >= this.max){
+                        this.value = this.max
+                        clearInterval(interval)
+                    }
+                    }, 100);
+                    }
+                }
+            );
+            iObserver.observe(this.$root);
+
+            
+        }
+    }">
+        <div class="counter"></div>
         <p>mais de</p>
-        <p>100</p>
-        <p>alunos ativos</p>
-    </div>    <div>
-        <p>mais de</p>
-        <p>100</p>
-        <p>alunos ativos</p>
+        <p class="num" x-text="value">0</p>
+        <p>alunos</p>
     </div>
+    <div x-cloak x-data="{
+        value: 0,
+        max: 123,
+        tween: 16,
+        async init(){
+            const iObserver = new IntersectionObserver(
+                entries => {
+                    console.log(entries[0].isIntersecting);
+                    if(entries[0].isIntersecting){
+                        const interval = setInterval(() => {
+                        this.value += parseInt(this.tween)
+                        this.tween /= 5
+                        if(this.value >= this.max){
+                        this.value = this.max
+                        clearInterval(interval)
+                    }
+                    }, 100);
+                    }
+                }
+            );
+            iObserver.observe(this.$root);
+
+            
+        }
+    }">
+        <div class="counter"></div>
+        <p>mais de</p>
+        <p class="num" x-text="value">0</p>
+        <p>alunos</p>
+    </div>
+
 </section>
 
 <style>
     section {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         text-align: center;
     }
 
-    div > *:nth-child(2){
-        font-size: 4em;
-        font-weight: bold;
-        font-family: 'Bangers', system-ui;
+    .num {
+        font-size: 6rem;
+        font-family: 'Bangers', sans-serif;
         color: white;
-		--border: 4px;
-		--border-n: -4px;
-		text-shadow: var(--border-n) var(--border-n) 0 #000, var(--border) var(--border-n) 0 #000, var(--border-n) var(--border) 0 #000, var(--border) var(--border) 0 #000, 8px 8px 0 #000;
-    }
-
-    div > * {
-        margin: 0;
+        --border: 2px;
+        --border-n: -2px;
+        text-shadow: var(--border-n) var(--border-n) 0 #000, var(--border) var(--border-n) 0 #000, var(--border-n) var(--border) 0 #000, var(--border) var(--border) 0 #000, 4px 4px 0 #000;
     }
 </style>

@@ -1,41 +1,35 @@
----
-import Image from "astro/components/Image.astro"
-import { getGallery } from "../../scripts/Baserow"
-
-const gallery = await getGallery()
----
-<section class="container" id="gallery">
-    <h2>Galeria</h2>
-    <div class="gallery">
-        {gallery.map((img: any) => <Image src={img.url} alt="" inferSize={true}/>)}
+<section id="gallery">
+    <div>
+        <h2>Galeria</h2>
+        <div class="gallery">
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+        </div>
     </div>
 </section>
 
 <style>
     section {
         text-align: center;
-        padding-top: 5rem;
-        padding-bottom: 5rem;
     }
-
+    
     .gallery {
         column-count: 3;
-        gap: 1rem;
     }
 
-    .gallery > * {
+    .img {
         width: 100%;
-        height: auto;
-        margin-bottom: 1rem;
+        height: 50vw;
+        background-color: antiquewhite;
+        margin-block: 1rem;
     }
 
     @media (max-width: 767px) {
         .gallery {
             column-count: 2;
         }
-    }
-
-    img {
-        object-fit: cover;
     }
 </style>

@@ -1,52 +1,58 @@
-<section class="container grid">
+---
+import Image from 'astro/components/Image.astro';
+import heroImg from './assets/hero.png'
+---
+
+<section id="features">
     <div>
-        <article>Feature 1</article>
-        <article>Feature 2</article>
-        <article>Feature 3</article>
+        <article>
+            <Image src={heroImg} alt={''}/>
+            <h3>Feature 1</h3>
+        </article>
+        <article>
+            <Image src={heroImg} alt={''}/>
+            <h3>Feature 1</h3>
+        </article>
+        <article>
+            <Image src={heroImg} alt={''}/>
+            <h3>Feature 1</h3>
+        </article>
+        <article>
+            <Image src={heroImg} alt={''}/>
+            <h3>Feature 1</h3>
+        </article>
     </div>
-    <div>
-        <h2>O que é o Bob Artelier</h2>
-        <p>Bob Artelier é uma plataforma criativa, de artista para artista para aprender livremente em diversas áreas do mercado criativo. 3D, Games, Ilustração..</p>
+    <div style="z-index: -1;">
+        <h2>O que é <br> Bob artelier?</h2>
+        <p>
+            Bob Artelier é uma plataforma criativa, de artista para artista para aprender livremente em diversas áreas do mercado criativo. 3D, Games, Ilustração..
+        </p>
     </div>
 </section>
 
-<style>
+<style>    
     section {
         position: relative;
-        padding-bottom: 50vh;
+        align-items: baseline;
     }
-    
-    section > *:nth-child(2){
+
+    article {
+        z-index: 9999;
+    }
+
+    section > *, section > * > * {
         position: sticky;
-        height: fit-content;
-        top: 8rem;
+        top: 7rem;
     }
-    
-    section > *:nth-child(1) > *{
-        position: sticky;
-        top: 8rem;
-        min-height: 30vh;
-    }
-    
-    
+
     @media (max-width: 767px) {
         section {
             display: flex;
             flex-direction: column-reverse;
         }
-        
-        section > *:nth-child(2){
-            position: sticky;
-            height: fit-content;
-            top: 8rem;
+
+        section > * > article {
+            top: 20rem;
         }
-        
-        section > *:nth-child(1) > *{
-            position: sticky;
-            top: 18rem;
-            min-height: 30vh;
-            z-index: 999;
-        }
-        
     }
 </style>

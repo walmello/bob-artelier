@@ -1,47 +1,59 @@
 ---
-import Image from "astro/components/Image.astro";
-import { getTestimonials } from "../../scripts/Baserow";
-const testimonials = await getTestimonials()
+
+const request = await fetch('https://api.baserow.io/api/database/rows/table/759955/?user_field_names=true&size=3',{
+    headers: {
+        Authorization: "Token yGfiMmcSdFgOvD9TJjbEueSiMEkHFegC"
+    }
+})
+const testimonials = (await request.json()).results.map(testimonial => ({
+    name: testimonial.Name,
+    role: testimonial.Role,
+    depoimento: testimonial.Depoimento,
+    image: testimonial.Imagem[0].url
+}))
+
+import Image from 'astro/components/Image.astro';
+import heroImg from './assets/hero.png'
 ---
 
-<section class="container">
-    <h2>O que os alunos tem a dizer sobre o curso?</h2>
-    <p>Alunos de verdade que encontraram seu potencial criativo</p>
-    <div class="testimonials">
-        {
-        testimonials.map((testimonial: any) => <article>
-            <Image src={testimonial.image} alt="" inferSize={true} />
-            <h3>{testimonial.name}</h3>
-            <p>{testimonial.text}</p>
-            <small>{testimonial.role}</small>
-        </article>)
-        }
+
+<section id="testimonials">
+    <div>
+        <div class="row">
+            <h2>O que os alunos dizem sobre o curso?</h2>
+            <a href="" role="button">Ver depoimentos</a>
+        </div>
+        <section class="courses">
+            {
+                testimonials.map((testimonial) =>
+                <article class="testimonial">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi aspernatur neque maxime odio. Excepturi nihil veniam in inventore eaque deleniti sapiente, voluptas voluptatibus maiores corporis natus necessitatibus cumque exercitationem dolor.</p>
+                    <div class="row">
+                        <Image src={heroImg} alt={''} width={100}/>
+                        <div class="foreground">
+                            <h3>{testimonial.name}</h3>
+                            <p>{testimonial.role}</p>
+                        </div>
+                    </div>
+                </article>
+                )
+            }
+        </section>
     </div>
 </section>
 
 <style>
-    .testimonials {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 1rem;
+    .testimonial img {
+        
     }
 
-    .testimonials > * {
-        display: flex;
-        flex-direction: column;
+    article .row {
+        justify-content: start;
         align-items: center;
     }
-
-    @media (max-width: 1024px) {
-        .testimonials {
-            grid-template-columns: 1fr 1fr;
-        }
+    
+    article p {
+        font-family: 'Comic Neue', sans-serif;
+        letter-spacing: -0.05rem;
     }
-
-    @media (max-width: 767px) {
-        .testimonials {
-            display: flex;
-            flex-direction: column;
-        }
-    }
-</style>    
+</style>

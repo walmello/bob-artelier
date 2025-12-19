@@ -1,82 +1,25 @@
-<section class="container grid" id="hero">
+---
+import Image from 'astro/components/Image.astro'
+import heroImg from './assets/hero.png'
+---
+
+<section id="hero">
+    <Image src={heroImg} alt={""} height={500}/>
     <div>
-        IMAGEM AQUI
-    </div>
-    <div>
-        <h1>Libere a sua <br>criatividade</h1>
-        <div class="wrapper">
-            <div class="box">
-                <p>Somos a escola de design para aqueles que sempre exploram o seu potencial</p>
-            </div>
-            <div class="button-wrapper">
-                <a role="button" href="#">Cadastre-se Grátis</a>
-            </div>
-        </div>
+        <h1>Pense, respire, <br> <strong>Se inspire</strong></h1>
+        <p>
+            Na BobArtelie, voce transforma talentos em habilidade e habilidade em carreira. Aprenda no seu ritmo, com orientaçao clara em um ambiente descontraido
+        </p>
+        <a role="button" href="/">Faça um curso grátis</a>
     </div>
 </section>
 
 <style>
-    section {
-        text-align: center;
-        min-height: 80vh;
-        align-items: center;
-        padding-bottom: 10rem;
+    section :global(img){
+        object-fit: contain;
     }
 
-    .box {
-        border: 2px solid black;
-        width: fit-content;
-        padding: 1rem;
-        box-shadow: 0.5rem 0.5rem 0 black;
-        background-color: white;
-        text-transform: uppercase;
-        letter-spacing: -0.02rem;
-    }
-
-    .box p {
-        font-weight: bold;
-    }
-
-    .wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        align-items: start;
-        gap: 2rem;
-    }
-
-    section > *:nth-child(2){
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        text-align: start;
-    }
-    
-    .button-wrapper {
-        display: flex;
-        gap: 1rem;
-    }
-    
-    @media (max-width: 573px) {
-        .button-wrapper {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .button-wrapper > * {
-            width: 80vw;
-        }
-        
-        section {
-            align-items: end;
-            justify-content: end;
-            padding-bottom: 2rem;
-        }
+    h1 {
+        font-size: max(5vw, 3rem);
     }
 </style>

@@ -1,0 +1,120 @@
+---
+import { Image } from 'astro:assets'
+import logo from './assets/logo.svg'
+---
+
+<div x-data="{
+	open: false
+}">
+<div class="overlay" x-cloak :style="{opacity: open ? '100%' : '0%'}"></div>
+<header>
+	<nav>
+		<a href="/#hero"><Image src={logo} alt={'Bob artelier logo'} /></a>
+		<a aria-controls="menu" style="font-size: 2rem;" @click="open = !open">
+			<span x-cloak x-show="open">X</span>
+			<span x-cloak x-show="!open">≡</span>
+		</a>
+		<ul id="menu" :aria-expanded="open">
+			<li><a href="/#courses">Cursos</a></li>
+			<li><a href="/#about">Sobre Mim</a></li>
+			<li><a href="/#gallery">Galeria</a></li>
+			<li><a href="/#community">Comunidade</a></li>
+			<li><a href="/#faq">Perguntas</a></li>
+			<div role="separator"></div>
+			<li><a href="/login" role="button">Login</a></li>
+			<li><a href="/registrar" role="button">Registrar</a></li>
+		</ul>
+	</nav>
+</header>
+</div>
+
+<div class="spacer"></div>
+
+<style>
+	a {
+		text-decoration: none;
+	}
+	
+	.spacer {
+		height: 5rem;
+	}
+	
+	[role='separator']{
+		width: 100%;
+	}
+	.overlay {
+		background-color: #0005;
+		z-index: 1;
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+	}
+	
+	
+	header {
+		position: fixed;
+		top: 0;
+		background-color: white;
+		border-bottom: 2px solid black;
+		padding-block: 0.5rem;
+		z-index: 9999;
+		width: 100%;
+		padding-inline: 1rem;
+	}
+	
+	nav {
+		display: flex;
+		align-items: center;
+		z-index: 2;
+	}
+	
+	ul {
+		width: 100%;
+		padding-inline: 1rem;
+	}
+	
+	a {
+		text-wrap-mode: nowrap;
+		color: black;
+	}
+	
+	a:hover {
+		color: #00a;
+	}
+	
+	[aria-controls="menu"]{
+		display: none;
+	}
+	
+	@media (max-width: 1024px) {
+		nav {
+			flex-wrap: wrap;
+		}
+		
+		#menu {
+			height: 0;
+			flex-direction: column;
+			flex-grow: 1;
+			width: 100%;
+			overflow: hidden;
+			align-items: end;
+		}
+		[aria-controls="menu"]{
+			display: block;
+		}
+		#menu[aria-expanded=true]{
+			height: fit-content;
+		}		
+		
+		li {
+			width: 100%;
+		}
+		
+		[role='button']{
+			width: 100% !important;	
+		}
+	}
+</style>

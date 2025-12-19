@@ -1,0 +1,90 @@
+---
+import { Image } from 'astro:assets';
+import hand from './assets/cursorHand.svg';
+import shadow from './assets/cursorShadow.svg';
+import select from './assets/cursorSelect.svg';
+---
+
+<div x-data="{
+    left: 0,
+    top: 0,
+    visible: false,
+    pointing: false,
+    async init(){
+        document.addEventListener('mousemove', (mouse) => {
+            this.left = mouse.clientX
+            this.top = mouse.clientY
+        })
+        this.$nextTick(() => {
+            document.addEventListener('mouseleave', (mouse) => {
+                this.visible = false
+            })
+            document.addEventListener('mouseenter', (mouse) => {
+                this.left = mouse.clientX
+                this.top = mouse.clientY
+                this.visible = true
+            })
+            const links = document.querySelectorAll('a')
+
+            links.forEach(element => {
+                element.addEventListener('mouseenter', (mouse) => {
+                    this.pointing = true;
+                })
+                element.addEventListener('mouseleave', (mouse) => {
+                    this.pointing = false;
+                })
+            });
+        })
+    }
+}">
+<div x-cloak :class="{pointing}" x-show="visible" class="cursor" :style="`left: ${left || 0}px; top: ${top || 0}px`">
+    <div class="wrapper">
+        <span x-cloak>
+            <Image src={shadow} alt={''}/>
+        </span>
+        <span x-cloak :style="`transform: translateY(${!pointing ? '-8px' : '-2px'})`">
+            <span x-show="!pointing"><Image src={hand} alt={''}/></span>
+            <span x-show="pointing"><Image src={select} alt={''}/></span>
+        </span>
+    </div>
+</div>
+</div>
+
+<style is:global>
+    * {
+        cursor: none !important;
+    }
+</style>
+
+<style>
+    .cursor {
+        position: fixed;
+        z-index: 9999;
+        left: 10rem;
+        top: 0;
+        transition: none;
+        width: fit-content;
+        height: fit-content;
+        pointer-events: none;
+        transform-origin: center;
+    }
+
+    .wrapper {
+        position: relative;
+    }
+
+    .wrapper > * {
+        position: absolute;
+    }
+
+    span > * {
+        width: 2.5rem;
+        height: 2.5rem;
+        max-width: none;
+        max-height: none;
+    }
+
+    .pointing > * {
+
+    }
+</style>

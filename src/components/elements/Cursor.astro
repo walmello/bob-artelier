@@ -5,6 +5,13 @@ import shadow from './assets/cursorShadow.svg';
 import select from './assets/cursorSelect.svg';
 ---
 
+<script>
+    document.addEventListener('mousemove', (mouse) => {
+        window.cursor.mouseX = mouse.clientX
+        window.cursor.mouseY = mouse.clientY
+    })
+</script>
+
 <div x-data="{
     left: 0,
     top: 0,
@@ -25,7 +32,7 @@ import select from './assets/cursorSelect.svg';
                 this.visible = true
             })
             const links = document.querySelectorAll('a')
-
+            
             links.forEach(element => {
                 element.addEventListener('mouseenter', (mouse) => {
                     this.pointing = true;
@@ -37,7 +44,7 @@ import select from './assets/cursorSelect.svg';
         })
     }
 }">
-<div id="cursor" x-cloak :class="{pointing}" x-show="visible" class="cursor" :style="`left: ${left || 0}px; top: ${top || 0}px`">
+<div hx-preserve id="cursor" x-cloak :class="{pointing}" x-show="visible" class="cursor" :style="`left: ${left || 0}px; top: ${top || 0}px`">
     <div class="wrapper">
         <span x-cloak>
             <Image src={shadow} alt={''}/>
@@ -70,26 +77,26 @@ import select from './assets/cursorSelect.svg';
         pointer-events: none;
         transform-origin: center;
     }
-
+    
     .wrapper {
         position: relative;
     }
-
+    
     .wrapper > * {
         position: absolute;
     }
-
+    
     span > * {
         width: 2.5rem;
         height: 2.5rem;
         max-width: none;
         max-height: none;
     }
-
+    
     .pointing > * {
-
+        
     }
-
+    
     @media (max-width: 767px) {
         .cursor {
             display: none !important;

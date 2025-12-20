@@ -28,12 +28,11 @@ import Slider from '../elements/Slider.astro';
             {
                 testimonials.map((testimonial) =>
                 <article class="testimonial">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi aspernatur neque maxime odio. Excepturi nihil veniam in inventore eaque deleniti sapiente, voluptas voluptatibus maiores corporis natus necessitatibus cumque exercitationem dolor.</p>
+                    <p>{testimonial.depoimento}</p>
                     <div class="row">
-                        <Image src={heroImg} alt={''} width={100}/>
+                        <Image src={testimonial.image} inferSize={true} alt={''} width={100}/>
                         <div class="foreground">
                             <h3>{testimonial.name}</h3>
-                            <p>{testimonial.role}</p>
                         </div>
                     </div>
                 </article>
@@ -46,7 +45,22 @@ import Slider from '../elements/Slider.astro';
 <style>
     article {
         flex: 0 0 25rem;
+        height: 20rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
+
+    .row {
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .row img {
+        border-radius: 9999px;
+        width: 4rem;
+        aspect-ratio: 1/1;
+    } 
 
     .testimonial img {
         

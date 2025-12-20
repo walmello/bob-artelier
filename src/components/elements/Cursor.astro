@@ -6,7 +6,7 @@ import select from './assets/cursorSelect.svg';
 ---
 
 <script>
-    document.addEventListener('mousemove', (mouse) => {
+    document.addEventListener('pointermove', (mouse) => {
         window.cursor.mouseX = mouse.clientX
         window.cursor.mouseY = mouse.clientY
     })
@@ -18,15 +18,15 @@ import select from './assets/cursorSelect.svg';
     visible: false,
     pointing: false,
     async init(){
-        document.addEventListener('mousemove', (mouse) => {
+        document.addEventListener('pointermove', (mouse) => {
             this.left = mouse.clientX
             this.top = mouse.clientY
         })
         this.$nextTick(() => {
-            document.addEventListener('mouseleave', (mouse) => {
+            document.addEventListener('pointerout', (mouse) => {
                 this.visible = false
             })
-            document.addEventListener('mouseenter', (mouse) => {
+            document.addEventListener('pointerover', (mouse) => {
                 this.left = mouse.clientX
                 this.top = mouse.clientY
                 this.visible = true
@@ -34,10 +34,10 @@ import select from './assets/cursorSelect.svg';
             const links = document.querySelectorAll('a')
             
             links.forEach(element => {
-                element.addEventListener('mouseenter', (mouse) => {
+                element.addEventListener('pointerover', (mouse) => {
                     this.pointing = true;
                 })
-                element.addEventListener('mouseleave', (mouse) => {
+                element.addEventListener('pointerout', (mouse) => {
                     this.pointing = false;
                 })
             });

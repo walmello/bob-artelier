@@ -79,6 +79,7 @@ const {each = 3, size = 20} = Astro.props;
     
     .slider-container > :global(*) {
         scroll-snap-align: start;
+        scroll-margin-left: 2rem;
     }
     
     .dots {
@@ -126,6 +127,7 @@ const {each = 3, size = 20} = Astro.props;
 
         .wrapper {
             overflow: auto;
+            scroll-snap-type: x mandatory;
         }
     }
 </style>

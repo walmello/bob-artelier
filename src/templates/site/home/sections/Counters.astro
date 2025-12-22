@@ -26,6 +26,11 @@ const counters = ['100', '100', '100']
         font-family: "Bangers", system-ui;
         font-size: 3rem;
     }
+
+    p {
+        font-weight: bold;
+        text-transform: capitalize;
+    }
     
     
     div {
@@ -39,20 +44,4 @@ const counters = ['100', '100', '100']
     div > *:nth-child(2){
         font-size: 3rem;
     }
-
-    @media (min-width: 468px) {
-        [x-text="value"]{
-            font-size: 2rem;
-            background-color: aqua;
-            color: blue;
-        }
-    }
-</style>
-
-<style>
-    @property --p {
-        syntax: "<number>";
-            inherits: false;
-            initial-value: 0;
-        }    
 </style>

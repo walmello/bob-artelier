@@ -40,9 +40,12 @@ x-intersect.once="intersect"
         text-align: center;
     }
     
-    @media (max-width: 468px) {
+    @media (max-width: 560px) {
         [x-text="value"]{
             font-size: 7vw;
+            --border: 2px;
+            --border-n: -2px;
+            text-shadow: var(--border-n) var(--border-n) 0 #000, var(--border) var(--border-n) 0 #000, var(--border-n) var(--border) 0 #000, var(--border) var(--border) 0 #000, 0.8vw 0.8vw 0 #000;
         }
     }
 </style>

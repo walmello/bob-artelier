@@ -1,18 +1,29 @@
-[data-theme=light],
-:root:not([data-theme=dark]),
-:host(:not([data-theme=dark])) {
-    --pico-primary-hover-background: #3992ff;
+:root {
+    --brand-color: #3993ff;
 }
 
 html {
     font-family: "Poppins", sans-serif;
     line-height: 1.618;
+    background-color: var(--brand-color);
+    color: white;
+}
+
+article{
+    background-color: white;
 }
 
 h1, h2, h3, button, [role='button'] {
     font-family: "Bangers", system-ui;
     font-weight: 400;
     font-style: normal;
+    color: white;
+}
+
+h1, h2, h3 {
+    --border: 2px;
+    --border-n: -2px;
+    text-shadow: var(--border-n) var(--border-n) 0 #000, var(--border) var(--border-n) 0 #000, var(--border-n) var(--border) 0 #000, var(--border) var(--border) 0 #000, 1px 1px 0 #0003;
 }
 
 h1 {
@@ -59,8 +70,8 @@ button:hover ,[role="button"]:hover{
     transform: translateY(-0.2em);
     transition: var(--default-transition);
     box-shadow: 0.4em 0.4em 0 #000a;
-    background-color: var(--pico-primary-hover-background);
-    color: white;
+    background-color: orange;
+    color: black;
 }
 
 button:active ,[role="button"]:active {

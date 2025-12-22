@@ -1,0 +1,74 @@
+---
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import './assets/pico-main/css/pico.fluid.classless.min.css';
+import './assets/layouts.css';
+import Cursor from '../elements/Cursor.astro';
+---
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bob Artelier</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/morph@3.x.x/dist/cdn.min.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js" integrity="sha384-/TgkGk7p307TH7EXJDuUlgG3Ce1UVolAOFopFekQkkXihi5u/6OCvVKyz1W+idaz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/htmx-ext-head-support@2.0.5" integrity="sha384-cvMqHzjCJsOHgGuyB3sWXaUSv/Krm0BdzjuI1rtkjCbL1l1oHJx+cHyVRJhyuEz0" crossorigin="anonymous"></script>    
+</head>
+<body id="body" hx-boost="true" hx-ext="head-support" hx-swap="outerHTML swap:1s settle:2s">
+    <aside>
+        AAAAA
+    </aside>
+    <main id="main">
+        <section>
+            <div>
+                <h1>Olá Irineu</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quos aut labore officia, nobis asperiores atque sit suscipit provident beatae molestiae, voluptates tempora et soluta nostrum libero quaerat inventore minus?</p>
+            </div>
+        </section>
+    </main>
+    <aside>
+        AAAAA
+    </aside>
+    <Footer/>
+    <!--
+    <Cursor>
+    -->
+</body>
+</html>
+
+<style is:global>
+    main {
+        transition: opacity 0.2s ease-in-out;
+    }
+    
+    .htmx-swapping main {
+        opacity: 0;
+    }
+    
+    .htmx-settling main {
+        opacity: 1;
+    }
+
+    body {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        min-height: 100vh;
+        align-items: stretch;
+        justify-content: space-between;
+    }
+
+    main {
+        flex-grow: 1;
+        background-color: antiquewhite;
+        width: 50vw !important;
+    }
+
+    aside {
+        flex-shrink: 0;
+        border-right: 1px solid black;
+        width: 15rem;
+    }
+</style>

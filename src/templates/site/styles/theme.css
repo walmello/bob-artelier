@@ -1,0 +1,81 @@
+[data-theme=light],
+:root:not([data-theme=dark]),
+:host(:not([data-theme=dark])) {
+    --pico-primary-hover-background: #3992ff;
+}
+
+html {
+    font-family: "Poppins", sans-serif;
+    line-height: 1.618;
+}
+
+h1, h2, h3, button, [role='button'] {
+    font-family: "Bangers", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h1 strong {
+    color: white;
+    --border: 4px;
+    --border-n: -4px;
+    text-shadow: var(--border-n) var(--border-n) 0 #000, var(--border) var(--border-n) 0 #000, var(--border-n) var(--border) 0 #000, var(--border) var(--border) 0 #000, 8px 8px 0 #000;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+@media (max-width: 469px) {
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+h2 strong {
+    color: white;
+    --border: 2px;
+    --border-n: -2px;
+    text-shadow: var(--border-n) var(--border-n) 0 #000, var(--border) var(--border-n) 0 #000, var(--border-n) var(--border) 0 #000, var(--border) var(--border) 0 #000, 4px 4px 0 #000;
+}
+
+button,[role='button']{
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 0;
+    font-family: 'Bangers', sans-serif;
+    color: black;
+    letter-spacing: 0.05rem;
+    box-shadow: 0.2em 0.2em 0 black;
+    transition: all 0.2s ease-in;
+}
+
+button:hover ,[role="button"]:hover{
+    transform: translateX(-0.2em);
+    transform: translateY(-0.2em);
+    transition: var(--default-transition);
+    box-shadow: 0.4em 0.4em 0 #000a;
+    background-color: var(--pico-primary-hover-background);
+    color: white;
+}
+
+button:active ,[role="button"]:active {
+    transform: translateX(0);
+    transform: translateY(0);
+    box-shadow: 0.1em 0.1em 0 #000a;
+}
+
+
+article {
+    box-shadow: none;
+    border: 1px solid #0002;
+}
+
+p {
+    font-size: 0.8rem;
+}
+

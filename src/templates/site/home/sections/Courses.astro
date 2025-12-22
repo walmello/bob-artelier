@@ -1,0 +1,45 @@
+---
+import Slider from "../../components/Slider.astro"
+import Card from '../../components/cards/Course.astro'
+
+const request = await fetch('https://api.baserow.io/api/database/rows/table/714529/?user_field_names=true',{
+    headers: {
+        Authorization: "Token yGfiMmcSdFgOvD9TJjbEueSiMEkHFegC"
+    }
+})
+const courses = (await request.json()).results.map(course => ({
+    name: course.Name,
+    image: course.Thumbnail[0].url
+}))
+---
+
+<section id="cursos" class="">
+    <div class="row container">
+        <h2>
+            Cursos feitos sob medida <br>
+            <strong>De artista para artista</strong>
+        </h2>
+        <a role="button" href="">Ver todos os cursos</a>
+    </div>
+    <div class="grid">
+        <Slider>
+            { courses.map(course => <Card name={course.name}/>) }
+        </Slider>
+    </div>
+</section>
+
+<style>
+    
+
+    @media (max-width: 1280px) {
+        .card {
+        }
+    }
+
+    @media (max-width: 1280px) {
+    }
+
+    
+    
+</style>
+

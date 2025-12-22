@@ -1,0 +1,52 @@
+---
+import Slider from "../../components/Slider.astro"
+import Testimonial from "../../components/cards/Testimonial.astro"
+
+const request = await fetch('https://api.baserow.io/api/database/rows/table/759955/?user_field_names=true',{
+    headers: {
+        Authorization: "Token yGfiMmcSdFgOvD9TJjbEueSiMEkHFegC"
+    }
+})
+const testimonials = (await request.json()).results.map(testimonial => ({
+    name: testimonial.Name,
+    role: testimonial.Role,
+    text: testimonial.Depoimento,
+    image: testimonial.Imagem[0].url
+}))
+---
+
+<section id="depoimentos" class="">
+    <div class="container row">
+        <h2>
+            O que os nossos alunos <br>
+            <strong>Dizem sobre o curso?</strong>
+        </h2>
+        <a role="button" href="">Ver todos os depoimentos</a>
+    </div>
+    <div class="grid">
+        <Slider>
+            {
+                testimonials.map(testimonial => <Testimonial testimonial={testimonial} />)
+            }
+        </Slider>
+    </div>
+</section>
+
+<style>
+    img {
+        width: 3rem;
+        aspect-ratio: 1/1;
+        border-radius: 999px;
+        background-color: antiquewhite;
+    }
+
+    article {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .grid .row {
+        justify-content: start;
+    }
+</style>

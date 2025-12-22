@@ -1,0 +1,32 @@
+---
+const images = ['img','img','img','img','img','img']
+---
+
+<section id="galeria" class="container">
+    <h2><strong>Galeria</strong></h2>
+    <div>
+        {
+            images.map(image => <img src="/images/foto-bob.jpg" alt="" srcset=""/>)
+        }
+    </div>
+</section>
+
+<style>
+    section {
+        text-align: center;
+    }
+    
+    section > div {
+        column-count: 3;
+    }
+    
+    section > div > * {
+        margin-block: 0.5rem;
+    }
+    
+    @media (max-width: 767px) {
+        section > div {
+            column-count: 2;
+        }
+    }
+</style>

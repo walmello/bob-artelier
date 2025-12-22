@@ -1,0 +1,58 @@
+---
+const features = ['Feature 1', 'Feature 1', 'Feature 1']
+---
+
+<section id="features" class="grid container" style="position: relative;">
+    <div>
+        {
+            features.map(feature => <article class="sticky">
+                <img src="/images/hero.png" alt="" srcset=""/>
+                <h3>Feature</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, beatae iusto ad iste quas officia eaque vero non quisquam, aliquam quod ea esse quo cumque doloribus illum, unde placeat sapiente.</p>
+            </article>)
+        }
+    </div>
+    <div class="sticky">
+        <div class="sticky box">
+            <h2>
+                O que é o <br>
+                <strong>Bob Artelier?</strong>
+            </h2>
+            <p>
+                Bob Artelier é uma plataforma criativa, de artista para artista para aprender livremente em diversas áreas do mercado criativo. 3D, Games, Ilustração..
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    section {
+        align-items: start;
+    }
+
+    
+
+    article{
+        z-index: 999 !important;
+    }
+
+    .sticky {
+        position: sticky;
+        top: 7rem;
+    }
+
+    @media (max-width: 767px) {
+        section {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .sticky {
+            top: 4rem;
+        }
+
+        article.sticky {
+            top: 16rem;
+        }
+    }
+</style>

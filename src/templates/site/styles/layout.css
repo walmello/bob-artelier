@@ -1,0 +1,81 @@
+:root {
+    --default-transition: all 0.2s linear(0, 0.1, 0.25, 0.5, 0.68, 0.8, 0.88, 0.94, 0.98, 0.995, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0rem;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.grid {
+    width: 100%;
+    column-gap: 4rem;
+}
+
+a,button,[role='button']{
+    text-wrap: nowrap;
+}
+
+section {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-block: 5rem;
+    align-items: center;
+}
+
+form button {
+    width: 100%;
+}
+
+
+.sticky {
+    position: sticky;
+    top: 7rem;
+}
+
+.layers {
+    position: relative;
+}
+
+.layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.foreground {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.fixed {
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+}

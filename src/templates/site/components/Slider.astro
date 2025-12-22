@@ -1,0 +1,131 @@
+---
+import Image from 'astro/components/Image.astro';
+import heroImg from './assets/hero.png'
+
+const {each = 3, size = 20} = Astro.props;
+---
+
+<div class="component" x-data={`{
+    items: [],
+    _current: 0,
+    dots: 0,
+    get current() {
+        return this._current
+    },
+    set current(value){
+        this._current = ((value % this.dots) + this.dots) % this.dots
+        this.$refs.scroll.scrollTo({
+            left: this.items[this.current].offsetLeft - this.$refs.items.offsetLeft,
+            behavior: 'smooth'
+        })
+    },
+    update(){
+        const item = this.items[0]
+        const scroll = this.$refs.scroll
+        const width = getComputedStyle(item).width.split('px').join('')
+        console.log((Math.floor(scroll.offsetWidth / width) - 1))
+        this.dots = this.items.length - (Math.floor(scroll.offsetWidth / width) - 1)
+    },
+    init(){
+        this.items = this.$refs.items.children
+        this.update()
+        window.onresize = () => { this.update() }
+        this.$nextTick(() => {
+            this.current = 0
+        })
+    }
+}`}>
+<div class="wrapper" x-ref="scroll">
+    <div class="slider">
+        <div class="slider-container container" :role="dots > 1 ? 'slider' : ''" aria-valuemin="0" :aria-valuemax="items.length" x-ref="items">
+            <slot></slot>
+        </div>
+    </div>
+</div>
+
+<div class="controllers container" x-show="dots > 1">
+    <div role="button" @click="current--">&#8249;</div>
+    <div role="button" @click="current++">&#8250;</div>
+</div>
+
+<div class="dots" x-show="dots > 1">
+    <template x-for="i in dots">
+        <div class="dot" :class="{active: current == i - 1}"></div>
+    </template>
+</div>
+
+</div>
+
+<style>
+    .wrapper {
+        overflow: hidden;
+    }
+
+    [role='button']{
+        font-family: sans-serif;
+    }
+    
+    .component {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .slider-container {
+        display: flex;
+        gap: 1rem;
+        padding-block: 1rem;
+    }
+    
+    .slider-container > :global(*) {
+        scroll-snap-align: start;
+    }
+    
+    .dots {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .dot {
+        width: 0.8rem;
+        height: 0.8rem;
+        aspect-ratio: 1/1;
+        border-radius: 99px;
+        border: 2px solid black;
+    }
+
+    .dot.active {
+        background-color: black;
+    }
+    
+    .controllers {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        position: absolute;
+        width: 90vw;
+        max-width: none;
+        top: 0;
+        height: 100%;
+        align-items: center;        
+        align-self: center;
+        justify-self: center;
+        pointer-events: none;
+    }
+
+    .controllers > * {
+        pointer-events: all;
+    }
+    
+    @media (max-width: 464px) {
+        .dots, .controllers {
+            display: none;
+        }
+
+        .wrapper {
+            overflow: auto;
+        }
+    }
+</style>

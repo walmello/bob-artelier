@@ -1,0 +1,75 @@
+---
+import Form from "../components/Form.astro";
+import TermsAndConditions from "../components/TermsAndConditions.astro";
+import Layout from "../Layout.astro";
+---
+
+<Layout>
+    <section class="grid container">
+        <div class="sticky" style="align-self: baseline;">
+            <img src="/images/hero.png" alt="" srcset=""/>
+        </div>
+        <div>
+            <Form 
+            title="Criar conta" 
+            submit="Criar conta"
+            confirm={true}
+            x-data={`
+                email: '',
+                password: '',
+                checkPassword: '',
+                validate(){
+                    if(!this.email){ this.alerts.push('Email faltando') }
+                    if(!this.password){ this.alerts.push('Senha faltando') }
+                    if(this.password != this.checkPassword){ this.alerts.push('Senhas não são iguais') }
+                },
+                async submit(){
+                    let { data, error } = await supabaseClient.auth.signInWithPassword({ email: this.email, password: this.password })
+                    console.log(data, error)
+                }
+                `}>
+                <div>
+                    <label>
+                        Email: <br/>
+                        <input type="email" x-model="email">
+                    </label>
+                    <label>
+                        Senha: <br/>
+                        <input type="password" x-model="password">
+                    </label>
+                    <label>
+                        Confirmar Senha: <br/>
+                        <input type="password" x-model="checkPassword">
+                    </label>
+                </div>
+                <p>
+                    Por favor leia e confirme os termos abaixo
+                </p>
+                <article class="terms">
+                    <small>                   
+                        <TermsAndConditions/>
+                        <hr>
+                        <label>
+                            <input type="checkbox" name="" id="" x-model="confirm"/>
+                            Confirmo que li e concordo com os termos e condições                    
+                        </label>
+                    </small>                    
+                </article>
+            </Form>         
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .alert {
+        color: red;
+    }
+    
+    .terms {
+        overflow-y: scroll;
+        max-height: 20rem !important;
+    }
+    
+    @media (max-width: 489px) {
+    }
+</style>

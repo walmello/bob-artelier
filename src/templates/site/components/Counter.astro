@@ -1,0 +1,55 @@
+---
+const counters = ['100', '100', '100']
+---
+
+<div x-data={`{
+    value: 0,
+    total: 1000,
+    intersect(){
+        this.$nextTick(() => {
+            this.$refs.num.style.setProperty('--p', this.total)
+            const loop = () => {
+                this.value = Math.floor(getComputedStyle(this.$refs.num).getPropertyValue('--p'))
+                if(this.value < this.total) requestAnimationFrame(loop)
+            }
+            requestAnimationFrame(loop)
+        })
+    }
+}`}
+x-intersect.once="intersect"
+>
+<p x-ref="num" x-text="value"></p>
+
+</div>
+
+
+<style>
+    [x-text="value"] {
+        --p: 0;
+        transition: --p 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+        transform: scale(calc((var(--p) * 0.0005) + 1));
+        font-family: "Bangers", system-ui;
+        font-size: 3rem;
+    }
+    
+    div {
+        text-align: center;
+    }
+    
+    @media (max-width: 468px) {
+        [x-text="value"]{
+            font-size: 7vw;
+        }
+    }
+</style>
+
+<style>
+    
+    
+    @property --p {
+        syntax: "<number>";
+            inherits: false;
+            initial-value: 0;
+        }      
+    </style>
+    

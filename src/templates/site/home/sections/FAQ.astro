@@ -1,0 +1,46 @@
+---
+const topics = ['topic', 'topic', 'topic']
+---
+
+<section id="faq" class="grid container">
+    <div>
+        <h2>Perguntas <br> 
+            <strong>Frequentes</strong>
+        </h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum sint id itaque cupiditate modi possimus recusandae? Consectetur, sit in, hic enim illo ad vero aliquam fugiat eos ullam laborum totam?</p>
+    </div>
+    <div>
+        {
+            topics.map(topic => 
+                <details>
+                    <summary><h3>O que é o bob artelier?</h3></summary>
+                    <div>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi minima vel, id reiciendis, dicta placeat sint aliquid consequatur delectus quis nobis neque. Consequatur quia animi dolore, explicabo facere tempore fugiat?
+                    </div>
+                </details>            
+            )
+        }
+    </div>
+</section>
+
+<style>
+    section {
+        align-items: baseline;
+    }
+
+    h3 {
+        display: block;
+        margin: 0;
+    }
+
+    details {
+        border: 1px solid #000a;
+        padding: 1rem;
+    }
+
+    summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>

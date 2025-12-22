@@ -1,0 +1,58 @@
+---
+import Counter from "../../components/Counter.astro"
+
+const counters = ['100', '100', '100']
+
+---
+
+<section class="grid">
+    {
+        counters.map(counter => <div>
+            <p>Mais de</p>
+            <Counter value={30}/>
+            <p>alunos</p>
+        </div>
+        )
+    }
+</section>
+
+
+
+<style>    
+    [x-text="value"] {
+        --p: 0;
+        transition: --p 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+        transform: scale(calc((var(--p) * 0.0005) + 1));
+        font-family: "Bangers", system-ui;
+        font-size: 3rem;
+    }
+    
+    
+    div {
+        text-align: center;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr 1fr 1fr !important;
+    }
+    
+    div > *:nth-child(2){
+        font-size: 3rem;
+    }
+
+    @media (min-width: 468px) {
+        [x-text="value"]{
+            font-size: 2rem;
+            background-color: aqua;
+            color: blue;
+        }
+    }
+</style>
+
+<style>
+    @property --p {
+        syntax: "<number>";
+            inherits: false;
+            initial-value: 0;
+        }    
+</style>

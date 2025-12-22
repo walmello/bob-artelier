@@ -1,0 +1,74 @@
+---
+import Layout from "../components/layout/Layout.astro"
+import Image from 'astro/components/Image.astro';
+import logo from "../components/home/assets/hero.png";
+---
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.89.0/dist/umd/supabase.min.js"></script>
+
+<script is:inline>
+    const { createClient } = supabase
+    const supabaseUrl = 'https://seqolypxaaqyrwzcwktp.supabase.co'
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNlcW9seXB4YWFxeXJ3emN3a3RwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIwMTM0NDgsImV4cCI6MjA3NzU4OTQ0OH0.k4k6oql2nk_4MwmTrP9K-5hH0YlMRmSgiYg7UmU9cR4'
+    const client = createClient(supabaseUrl, supabaseKey)    
+</script>
+
+<Layout>    
+    <section>
+        <div>
+            <Image src={logo} alt={'Bob artelier logo'} />
+        </div>
+        <article hx-boost="false">
+            <h1>Fazer Login</h1>
+            <form x-data="{
+                email: '',
+                password: '',
+                alert: [],
+                async submit(){
+                    this.alert = []
+
+                    if(this.email == '') this.alert.push('Email vazio')
+                    if(this.password == '') this.alert.push('Senha vazia')
+
+                    if(this.alert.length == 0){
+                        let { data, error } = await client.auth.signInWithPassword({ email: this.email , password: this.password})
+                        if(error){
+                            console.log(error)
+                            this.alert.push(error)
+                        } else {
+                            console.log(data)
+                            window.location.href = '/dashboard'
+                        }
+                    }
+                }
+            }"
+            @submit.prevent="submit" 
+            >
+            <div>
+                <template x-for="message in alert">
+                    <p> * <span x-text="message"></span> </p>
+                </template>
+            </div>
+            <label>
+                Email:
+                <input type="email" name="email" x-model="email"><br>
+            </label>
+            <label>
+                Senha:
+                <input type="password" name="password" x-model="password">
+            </label>
+            <button role="button" style="width: 100%;">Fazer Login</button>
+        </form>
+    </article>
+</section>
+</Layout>
+
+<style>
+    input {
+        font-family: 'Comic Neue', sans-serif !important;
+    }
+
+    p {
+        color: red;
+    }
+</style>

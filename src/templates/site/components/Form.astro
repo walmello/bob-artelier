@@ -1,0 +1,34 @@
+---
+const { title, submit, confirm } = Astro.props
+const data = Astro.props['x-data']
+---
+
+<article>
+    <form x-data={`{
+        alerts: [],
+        confirm: ${!confirm ? true : false},
+        ${data},
+    }`} @submit.prevent="alerts = []; validate(); submit()">
+    <h1>{title || 'Fazer Login'}</h1>
+    <div class="alert">
+        <template x-for="alert in alerts">
+            <small><p>* <span x-text="alert"></span></p></small>
+        </template>
+    </div>
+    <slot></slot>
+    <button :disabled="!confirm" >{submit || 'Entrar'}</button>
+</form>
+</article>
+
+
+<style>
+    .alert p {
+        color: red;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+</style>

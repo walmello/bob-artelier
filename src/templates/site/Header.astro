@@ -1,0 +1,161 @@
+<header x-data="{
+    open: false
+}">
+<div class="overlay"></div>
+<nav class="row container-fluid fixed" x-intersect="$el.classList.add('init')">
+    <div>
+        <a href="/">
+            <img src="/images/logo.svg" alt="" srcset=""/>
+        </a>
+    </div>
+    <div x-cloak @click="open = !open" role="button" class="menu-button">
+        <span x-show="!open">≡</span>
+        <span x-show="open">×</span>
+    </div>
+    <ul class="menu" :class="{open: open}">
+        <li><a href="/#cursos">Cursos</a></li>
+        <li><a href="/#sobre-mim">Sobre Mim</a></li>
+        <li><a href="/#galeria">Galeria</a></li>
+        <li><a href="/#comunidade">Comunidade</a></li>
+        <li><a href="/#faq">Perguntas</a></li>
+        <div class="separator"></div>
+        <li><a href="/login" role="button">Login</a></li>
+        <li><a href="/registrar" role="button">Cadastro Grátis</a></li>
+    </ul>
+</nav>
+</header>
+<!-- 
+<div class="spacer"></div>
+-->
+
+<style>
+    nav {
+        transition: var(--default-transition);
+        transition-duration: 0.8s;
+    }
+    
+    nav:not(.init){
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    
+    .overlay {
+        pointer-events: none;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        z-index: 999;
+        width: 100vw;
+        height: 100vh;
+        opacity: 0;
+        top: 0;
+        left: 0;
+        transition: var(--default-transition);
+    }
+    
+    @media (min-width: 767px) {
+        .menu a {
+            font-size: 0.8rem;
+        }
+        
+        li {
+            margin-block: 0;
+            padding-block: 0;
+        }        
+    }
+    
+    
+    .spacer {
+        height: 5rem;
+    }
+    
+    nav {
+        top: 0;
+        padding: 1rem;
+        background-color: white;
+        box-shadow: var(--pico-group-box-shadow);
+        border-bottom: 1px solid #0002;
+    }
+    
+    .row {
+        flex-wrap: nowrap;
+    }
+    
+    .separator {
+        width: 100%;
+    }
+    
+    nav ul {
+        width: 100%;
+        margin-left: 1rem;
+    }
+    
+    .menu-button {
+        display: none;
+        aspect-ratio: 1/1;
+        width: 3rem;
+        height: 3rem;
+        font-size: 2rem;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 0.8rem;
+        font-family: sans-serif;
+    }
+    
+    
+    @media (max-width: 767px) {
+        .row {
+            flex-wrap: wrap;
+        }
+        nav {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+        
+        nav ul {
+            width: 100%;
+            margin-left: 0rem;
+        }
+        
+        .menu {
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--default-transition);
+        }
+        
+        .menu-button {
+            display: flex;
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            padding: 0;
+        }
+        .menu.open {
+            padding-top: 2rem;
+            height: 30rem;
+        }
+
+        .menu.open .separator {
+            height: 2rem;
+        }
+        
+        header:has(.menu.open) .overlay {
+            opacity: 1;
+        }
+        
+        ul {
+            margin: 0;
+        }
+        
+        li {
+            width: 100%;
+            padding-inline: 0;
+        }
+        
+        .menu [role="button"]{
+            width: 100%;
+        }
+    }
+</style>

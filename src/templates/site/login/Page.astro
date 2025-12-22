@@ -1,0 +1,37 @@
+---
+import Layout from "../Layout.astro";
+import Form from '../components/Form.astro';
+---
+
+<Layout>
+    <section class="grid">
+        <div>
+            <img src="/images/hero.png" alt="" srcset=""/>
+        </div>
+        <div>
+            <Form x-data={`
+                email: '',
+                password: '',
+                validate(){
+                    if(!this.email){ this.alerts.push('Email faltando') }
+                    if(!this.password){ this.alerts.push('Senha faltando') }
+                },
+                async submit(){
+                    let { data, error } = await supabaseClient.auth.signInWithPassword({ email: this.email, password: this.password })
+                    console.log(data, error)
+                }
+                `}>
+                <div>
+                    <label>
+                        Email: <br/>
+                        <input type="email" x-model="email">
+                    </label>
+                    <label>
+                        Senha: <br/>
+                        <input type="password" x-model="password">
+                    </label>
+                </div>
+            </Form>            
+        </div>
+    </section>
+</Layout>

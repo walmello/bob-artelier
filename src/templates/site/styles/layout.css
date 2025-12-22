@@ -77,6 +77,8 @@ form button {
 
 .fixed {
     position: fixed;
-    width: 100vw;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: 9999;
 }
